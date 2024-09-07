@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Roboto } from 'next/font/google';
 
+const roboto = Roboto({
+  subsets: ['latin'], // Ensure the correct character subsets are used
+  weight: ['400', '500', '700'], // Choose the font weights you need
+});
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,9 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={roboto.className}
       >
+        <div className="max-w-7xl mx-auto">
         {children}
+        </div>
       </body>
     </html>
   );
