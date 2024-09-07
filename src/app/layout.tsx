@@ -33,7 +33,9 @@ export default function RootLayout({
       <body
         className={roboto.className}
       >
+        <div className="max-w-7xl mx-auto">
         {children}
+        </div>
       </body>
     </html>
   );
