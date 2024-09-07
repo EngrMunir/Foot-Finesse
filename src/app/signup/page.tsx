@@ -1,11 +1,34 @@
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { IoIosLock } from 'react-icons/io';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { MdEmail } from "react-icons/md";
 
 const page = () => {
+    const handleRegister =async(e :FormEvent<HTMLFormElement>): Promise<void>=>{
+        e.preventDefault()
+        const form =e.currentTarget
+        const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+        const emailInput = form.elements.namedItem('email') as HTMLInputElement;
+        const passwordInput = form.elements.namedItem('password') as HTMLInputElement;
+        const name = nameInput.value;
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        const userData = {
+            name,email,password
+        }
+        const res =await fetch('http://localhost:3000/signup/api',{
+            method: "POST",
+            headers:{
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+        const result = await res.json();
+        console.log(result)
+    }
     return (
         <div className='flex flex-col md:flex-row '>
         <div className='relative'>
@@ -15,18 +38,18 @@ const page = () => {
         </div>
         <div className='flex flex-col items-center justify-center mx-auto'>
             <Image src={'https://i.ibb.co.com/VJV2GRy/images.png'} height={100} width={150} alt='logo.png'/>
-            <form className='mt-12' action="">
+            <form onSubmit={handleRegister} className='mt-12' action="">
                 <div className='flex gap-1 items-center border-b-2 pb-1 mb-8 pr-12 border-secondary'>   
                         <IoPersonCircleSharp className='text-2xl text-gray-700'/>
-                       <input type="text" placeholder='Your Name' className='focus:outline-none focus:bg-none focus:border-none'/>
+                       <input type="text" name='name' placeholder='Your Name' className='focus:outline-none focus:bg-none focus:border-none'/>
                 </div>
                 <div className='flex gap-1 items-center border-b-2 pb-1 mb-8 pr-12 border-secondary'>   
                         <MdEmail className='text-2xl text-gray-700'/>
-                       <input type="email" placeholder='Email' className='focus:outline-none focus:border-none'/>
+                       <input type="email" name='email' placeholder='Email' className='focus:outline-none focus:border-none'/>
                 </div>
                 <div className='flex pb-1 gap-1 items-center border-b-2 pr-12 mb-8 border-secondary'>   
                         <IoIosLock className='text-2xl text-gray-700'/>
-                       <input type="password" placeholder='Password' className='focus:outline-none focus:border-none'/>
+                       <input name='password' type="password" placeholder='Password' className='focus:outline-none focus:border-none'/>
                 </div>
                <div className='flex justify-end'>
                <input type="submit" className='bg-primary text-white px-6 text-sm  py-1 rounded-full' value="SIGN UP"  />
