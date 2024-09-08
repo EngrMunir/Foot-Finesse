@@ -18,8 +18,10 @@ const page = () => {
         })
         console.log(res)
     }
-    const session =useSession()
-    console.log(session)
+    const handleSocialLogin=async(handler:string)=>{
+        const res =await signIn(handler)
+        console.log(res)
+    }
     return (
         <div className='flex flex-col h-screen md:flex-row '>
             <div className='relative flex-1'>
@@ -46,8 +48,8 @@ const page = () => {
                 </form>
                 <div className="divider text-xs font-medium text-secondary md:mx-36">OR LOGIN WITH</div>
                 <div className='flex items-center justify-between gap-2'>
-                    <div className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Google</div>
-                    <div className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Facebook</div>
+                    <button onClick={()=>handleSocialLogin('google')} className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Google</button>
+                    <button onClick={()=>handleSocialLogin('facebook')} className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Facebook</button>
                 </div>
             </div>
         </div>
