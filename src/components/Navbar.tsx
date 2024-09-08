@@ -5,11 +5,12 @@ import { signOut, useSession } from 'next-auth/react';
 import React from 'react';
 import { IoCartOutline } from "react-icons/io5";
 import { MdOutlineSearch } from "react-icons/md";
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const session = useSession();
     console.log(session)
-
+    const pathName =usePathname()
 
     const navItems =[
         {
@@ -33,6 +34,9 @@ const Navbar = () => {
             path:"/contact-us"
         }
     ]
+    if(pathName.includes('login') || pathName.includes('signup')){
+        return null
+    }
     return (
        <div className=' bg-base-100 text-slate-900'>
          <div className="navbar container mx-auto">
