@@ -1,21 +1,22 @@
 function Banner() {
   return (
     <div className='relative min-h-screen'>
-      <video className='w-full h-full' autoPlay muted>
+      <video className='h-full w-full' autoPlay muted>
         <source
           src='https://res.cloudinary.com/ahad-ali/video/upload/v1725796675/bg-video2_t3g0kl.mp4'
           type='video/mp4'
         />
       </video>
-      <div className='absolute w-full text-center bottom-6 left-1/2 -translate-x-1/2'>
-        <h1 className='text-[120px] leading-none italic font-bold text-white'>
+      <div className='absolute bottom-40 left-1/2 z-20 w-full -translate-x-1/2 text-center'>
+        <h1 className='text-[120px] font-medium italic leading-none text-white'>
           Bays cant start with out perfect shoes.
         </h1>
-        <button className='group mt-2 text-white border-white hover:bg-transparent btn btn-outline relative rounded-none'>
-          <p className='z-10 text-xl'> View All Collection</p>
-          <span className='absolute inset-0 duration-500 bg-white w-0 group-hover:w-full'></span>
+        <button className='group btn btn-outline relative mt-6 rounded-none border-white text-white hover:bg-transparent'>
+          <p className='z-10 text-xl font-light'> View All Collection</p>
+          <span className='absolute inset-0 w-0 bg-white duration-500 group-hover:w-full'></span>
         </button>
       </div>
+      <span className='absolute inset-0 h-full w-full bg-black opacity-20'></span>
     </div>
   );
 }
