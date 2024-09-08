@@ -35,16 +35,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthProvider>
+      
       <body
         className={roboto.className}
       >
+        <AuthProvider>
         <div className="max-w-6xl mx-auto">
           <Navbar/>
         {children}
         </div>
+        </AuthProvider>
       </body>
-      </AuthProvider>
+
     </html>
   );
 }

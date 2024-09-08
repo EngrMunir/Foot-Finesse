@@ -32,7 +32,7 @@ const page = () => {
     return (
         <div className='flex flex-col h-screen md:flex-row '>
         <div className='relative flex-1'>
-            <div className='relative w-full h-screen'>
+            <div className='relative w-full h-[75%] md:h-screen'>
             <Image src={'https://i.ibb.co.com/VJZvGn1/dbe7d1e0-4e42-4325-9d76-c38d558a3c06.jpg'} layout='fill' alt='shoe.png'/>
             </div>
         <Link href={'login'}><button className='absolute top-[35%] right-0 rounded-l-full text-2xl font-semibold px-8 py-4  text-white '>LOGIN</button></Link>
