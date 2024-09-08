@@ -1,10 +1,6 @@
 "use client"
-<<<<<<< HEAD
-import React, { useState } from 'react';
-=======
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
->>>>>>> f4a4f497a1a2ae6c0747d6ce08aa7f3b5822f5d3
 
 const AllShoe = () => {
     const {data: session } = useSession();
