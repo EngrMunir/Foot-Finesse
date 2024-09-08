@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 // import localFont from 'next/font/local';
 import './globals.css';
 import { Roboto } from 'next/font/google';
-
 import AuthProvider from './services/AuthProvider';
 import Navbar from '@/components/Navbar';
 
