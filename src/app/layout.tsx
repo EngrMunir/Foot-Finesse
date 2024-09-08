@@ -5,6 +5,7 @@ import { Roboto } from 'next/font/google';
 
 import AuthProvider from "./services/AuthProvider";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -42,6 +43,7 @@ export default function RootLayout({
         <div className="max-w-6xl mx-auto">
           <Navbar/>
         {children}
+        <Footer/>
         </div>
       </body>
       </AuthProvider>
