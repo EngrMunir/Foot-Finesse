@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Roboto } from 'next/font/google';
 
+import AuthProvider from "./services/AuthProvider";
+
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
   weight: ['400', '500', '700'], // Choose the font weights you need
@@ -30,6 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <AuthProvider>
       <body
         className={roboto.className}
       >
@@ -37,6 +40,7 @@ export default function RootLayout({
         {children}
         </div>
       </body>
+      </AuthProvider>
     </html>
   );
 }

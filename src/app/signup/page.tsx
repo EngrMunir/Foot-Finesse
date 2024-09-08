@@ -35,8 +35,8 @@ const page = () => {
             <div className='relative w-full h-screen'>
             <Image src={'https://i.ibb.co.com/VJZvGn1/dbe7d1e0-4e42-4325-9d76-c38d558a3c06.jpg'} layout='fill' alt='shoe.png'/>
             </div>
-        <Link href={'login'}><button className='absolute top-96 right-0 rounded-l-full text-2xl font-semibold px-8 py-4  text-white '>LOGIN</button></Link>
-        <Link href={'signup'}><button className='absolute top-[31rem] right-0 rounded-l-full text-2xl font-semibold px-5 py-4 bg-gray-400 text-blue-950'>SIGN UP</button></Link>
+        <Link href={'login'}><button className='absolute top-[35%] right-0 rounded-l-full text-2xl font-semibold px-8 py-4  text-white '>LOGIN</button></Link>
+        <Link href={'signup'}><button className='absolute top-[50%] right-0 rounded-l-full text-2xl font-semibold px-5 py-4 bg-gray-400 text-blue-950'>SIGN UP</button></Link>
         </div>
         <div className='flex flex-col flex-1 items-center justify-center mx-auto'>
             <Image src={'https://i.ibb.co.com/VJV2GRy/images.png'} height={100} width={150} alt='logo.png'/>
