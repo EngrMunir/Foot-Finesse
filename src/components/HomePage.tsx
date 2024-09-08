@@ -1,4 +1,5 @@
 import Banner from './Banner';
+import LatestCollection from './LatestCollection';
 import ShopNow from './ShopNow';
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
     <div className=''>
       <Banner />
       <ShopNow />
+      <LatestCollection />
     </div>
   );
 };
