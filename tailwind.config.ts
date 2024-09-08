@@ -11,12 +11,6 @@ const config: Config = {
       colors:{
         primary: '#000000',
         secondary: "#B3B3B1",
-        ".btn-primary":{
-          "color":"#fff"
-        },
-        ".btn-outline.btn-primary:hover":{
-          "color":"#fff"
-        },
       }
     },
   },
