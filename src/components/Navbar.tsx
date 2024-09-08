@@ -1,10 +1,7 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import { IoCartOutline } from 'react-icons/io5';
-import { MdOutlineSearch } from 'react-icons/md';
 import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
@@ -57,10 +54,10 @@ const Navbar = () => {
   return (
     <div
       id='nav'
-      className={`navbar ${navMoved ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 rounded-full duration-300`}
+      className={`navbar ${navMoved ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 rounded-full duration-500`}
     >
       <div className='navbar-start'>
-        {/* Mobile Menu */}
+        {/* Mobile Menu --------*/}
         {/* <div className='dropdown'>
             <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>
               <svg
@@ -120,7 +117,28 @@ const Navbar = () => {
           <BiCart className='text-2xl' />
         </button>
         <div>
-          {session?.status === 'loading' && <h6>Loading-----</h6>}
+          {session?.status === 'loading' ? (
+            <h6>Loading-----</h6>
+          ) : session?.status === 'unauthenticated' ? (
+            <div className='flex items-center gap-2'>
+              <Link href='/login'>
+                <button className='btn btn-sm rounded-2xl text-white'>
+                  Login <BiLogIn />
+                </button>
+              </Link>
+              <Link href='/register'>
+                <button className='btn btn-sm rounded-2xl border-transparent bg-white text-black hover:text-white'>
+                  Register <BiLogIn />
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <button className='btn btn-primary px-8' onClick={() => signOut()}>
+              Logout
+            </button>
+          )}
+          {/* Buggy code need to remove------- */}
+          {/* {session?.status === 'loading' && <h6>Loading-----</h6>}
           {session.status === 'unauthenticated' && (
             <Link href='/login'>
               <button className='btn btn-sm rounded-2xl text-white'>
@@ -132,7 +150,7 @@ const Navbar = () => {
             <button className='btn btn-primary px-8' onClick={() => signOut()}>
               Logout
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>

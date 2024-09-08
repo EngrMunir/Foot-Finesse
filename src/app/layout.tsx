@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+// import localFont from 'next/font/local';
 import './globals.css';
 import { Roboto } from 'next/font/google';
 
@@ -10,18 +10,18 @@ const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
   weight: ['400', '500', '700'], // Choose the font weights you need
 });
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+// const geistSans = localFont({
+//   src: './fonts/GeistVF.woff',
+//   variable: '--font-geist-sans',
+//   weight: '100 900',
+// });
+// const geistMono = localFont({
+//   src: './fonts/GeistMonoVF.woff',
+//   variable: '--font-geist-mono',
+//   weight: '100 900',
+// });
 
-const a = 5;
+// const a = 5;
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -35,9 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${roboto.className}`}>
+      <body className={roboto.className}>
         <AuthProvider>
-          <div className=''>
+          <div>
             <Navbar />
             {children}
           </div>
