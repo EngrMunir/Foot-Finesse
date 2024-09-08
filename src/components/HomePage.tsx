@@ -1,12 +1,13 @@
-import React from 'react';
-import Slider from './Slider';
+import Banner from './Banner';
+import ShopNow from './ShopNow';
 
 const HomePage = () => {
-    return (
-        <div className='h-screen'>
-            <Slider/>
-        </div>
-    );
+  return (
+    <div className=''>
+      <Banner />
+      <ShopNow />
+    </div>
+  );
 };
 
 export default HomePage;
