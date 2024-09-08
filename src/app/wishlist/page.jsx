@@ -1,17 +1,8 @@
-"use client"
-import axios from 'axios';
-import React, { useEffect } from 'react';
 
-const loadData = async() => {
-    const res = await axios.get('http://localhost:3000/AllShoe/api/get-all');
-    console.log(res.data);
-}
 
 const wishlistPage = () => {
 
-    useEffect(() => {
-        loadData
-    }, [])
+
 
     return (
         <div className=''>
