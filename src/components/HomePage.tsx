@@ -1,11 +1,12 @@
 import React from 'react';
+import Banner from './Banner';
 
 const HomePage = () => {
-    return (
-        <div className='h-screen'>
-            
-        </div>
-    );
+  return (
+    <div className=''>
+      <Banner />
+    </div>
+  );
 };
 
 export default HomePage;
