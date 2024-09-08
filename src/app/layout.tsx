@@ -4,6 +4,7 @@ import "./globals.css";
 import { Roboto } from 'next/font/google';
 
 import AuthProvider from "./services/AuthProvider";
+import Navbar from "@/components/Navbar";
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -38,7 +39,8 @@ export default function RootLayout({
       <body
         className={roboto.className}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
+          <Navbar/>
         {children}
         </div>
       </body>
