@@ -19,7 +19,7 @@ function page() {
             height={280}
             alt="Shoe"
           />
-          <p className="text-6xl font-bold absolute top-[38%] left-[15%]">
+          <p className="text-6xl font-bold absolute top-[38%] left-[15%] text-white">
             Contact Us
           </p>
         </div>
@@ -93,7 +93,7 @@ function page() {
               <div className="w-full">
                 <label className="text-secondary block mb-2">Name</label>
                 <input
-                  className="px-3 w-full py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="px-3 w-full py-2 rounded-md border border-primary focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary bg-inherit"
                   name="name"
                   type="text"
                 />
@@ -101,7 +101,7 @@ function page() {
               <div className="w-full">
                 <label className="text-secondary block mb-2">Email</label>
                 <input
-                  className="px-3 w-full py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="px-3 w-full py-2 rounded-md border border-primary focus:border-secondary  focus:outline-none focus:ring-2 focus:ring-secondary bg-inherit"
                   name="email"
                   type="email"
                 />
@@ -111,7 +111,7 @@ function page() {
                 <textarea
                   name="Message"
                   rows={5}
-                  className="px-3 w-full py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"
+                  className="px-3 w-full py-2 rounded-md border border-primary focus:border-secondary  focus:outline-none focus:ring-2 focus:ring-secondary bg-inherit"
                 ></textarea>
               </div>
               {/* submit btn */}
