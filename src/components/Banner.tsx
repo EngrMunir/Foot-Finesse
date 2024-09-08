@@ -1,7 +1,7 @@
 function Banner() {
   return (
     <div className='relative min-h-screen'>
-      <video className='h-full w-full' autoPlay muted>
+      <video className='h-full w-full' autoPlay loop muted>
         <source
           src='https://res.cloudinary.com/ahad-ali/video/upload/v1725796675/bg-video2_t3g0kl.mp4'
           type='video/mp4'
