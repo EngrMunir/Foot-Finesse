@@ -3,6 +3,7 @@ import AboutNav from "./AboutChaild/AboutNav";
 import AboutTitle from "./AboutChaild/AboutTitle";
 import BannerImage from "./AboutChaild/BannerImage";
 import Demo from "./AboutChaild/Demo";
+import Team from "./AboutChaild/Team";
 
 
 
@@ -32,6 +33,11 @@ const AboutUs = () => {
             {/* Banner section */}
             <div>
                 <AbBanner></AbBanner>
+            </div>
+
+            {/* Team Section */}
+            <div>
+                <Team></Team>
             </div>
 
         </div>
