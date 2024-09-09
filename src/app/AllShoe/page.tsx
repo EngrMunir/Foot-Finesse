@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+"use client"
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
 
 const AllShoe = () => {
-    // load data
-    const [products, setProducts] = useState([]);
-    
+    const {data: session } = useSession();
+    console.log(session)
+    const [shoes, setShoes] = useState([]);
+
+    const loadShoes = async()=>{
+        const res =await fetch('http://localhost:3000/AllShoe/api/get-all')
+        const data = await res.json();
+        console.log(data)
+        setShoes(data)
+    }
+    useEffect(()=>{
+        // if(session?.user?.email){
+            loadShoes()
+        // }
+    },[session])
     return (
-        <div>
-            This is all shoe page
+        <div className='bg-green-500 mt-20'>
+            <h1>All Shoe:{shoes?.length}</h1>
         </div>
     );
 };
