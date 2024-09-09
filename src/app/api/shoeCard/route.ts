@@ -24,3 +24,4 @@ export const GET = async()=>{
         throw new Error("Failed to fetch random shoes");
     }
 }
+
