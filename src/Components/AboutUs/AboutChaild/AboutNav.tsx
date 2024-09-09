@@ -7,7 +7,7 @@ import localImage from "/public/AboutUs/AboutNav.png";
 const AboutNav = () => {
     return (
         <div className="mt-1 mb-1">
-            <header className="border-b border-gray-200 bg-gray-50">
+            <header className="border-b border-gray-200 bg-[#FAF9F6]">
                 <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                     <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
 
@@ -22,7 +22,7 @@ const AboutNav = () => {
 
                         {/* Right Side Section */}
                         <div className="flex items-center gap-4">
-                            <Image src={localImage} className="rounded-full" height={150} width={150} alt='shoe.png' />
+                            <Image src={localImage} className="rounded-t-full" height={150} width={150} alt='shoe.png' />
                         </div>
                     </div>
                 </div>
