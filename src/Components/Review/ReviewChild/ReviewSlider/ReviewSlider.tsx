@@ -1,5 +1,3 @@
-import Slider from "./Slider";
-
 
 
 const ReviewSlider = () => {
@@ -18,7 +16,7 @@ const ReviewSlider = () => {
 
                         {/* Slider */}
                         <div>
-                            <Slider></Slider>
+                            <p>Review add functionality</p>
                         </div>
                     </div>
                 </div>
