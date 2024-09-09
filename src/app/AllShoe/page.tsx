@@ -1,6 +1,6 @@
 "use client"
 import { useSession } from 'next-auth/react';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const AllShoe = () => {
     const {data: session } = useSession();
@@ -13,8 +13,11 @@ const AllShoe = () => {
         console.log(data)
         setShoes(data)
     }
-    loadShoes();
-    
+    useEffect(()=>{
+        // if(session?.user?.email){
+            loadShoes()
+        // }
+    },[session])
     return (
         <div className='bg-green-500 mt-20'>
             <h1>All Shoe:{shoes?.length}</h1>
