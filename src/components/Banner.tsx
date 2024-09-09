@@ -12,7 +12,7 @@ function Banner() {
           Bays cant start with out perfect shoes.
         </h1>
         <button className='group btn btn-outline relative mt-6 rounded-none border-white text-white hover:bg-transparent'>
-          <p className='z-10 text-xl font-light'> View All Collection</p>
+          <p className='z-10 text-xl font-light group-hover:text-black'> View All Collection</p>
           <span className='absolute inset-0 w-0 bg-white duration-500 group-hover:w-full'></span>
         </button>
       </div>
