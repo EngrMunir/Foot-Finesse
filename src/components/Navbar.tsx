@@ -11,7 +11,7 @@ const Navbar = () => {
   // console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  console.log(pathName);
+  // console.log(pathName);
 
   useEffect(() => {
     const navStateHandler = () => {
