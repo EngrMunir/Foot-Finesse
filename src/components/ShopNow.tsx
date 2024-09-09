@@ -13,7 +13,7 @@ function ShopNow() {
         <div>
           <button className='group btn relative mt-6 rounded-none border-black bg-black text-white hover:bg-transparent'>
             <p className='z-10 text-xl duration-500 group-hover:text-black'>Shop Now</p>
-            <span className='absolute inset-0 w-0 bg-white duration-500 group-hover:w-full'></span>
+            <span className='absolute inset-0 w-0 bg-white  duration-500 group-hover:w-full'></span>
           </button>
         </div>
       </div>
