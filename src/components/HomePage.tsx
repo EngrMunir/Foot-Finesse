@@ -1,11 +1,15 @@
-import React from 'react';
+import Banner from './Banner';
+import LatestCollection from './LatestCollection';
+import ShopNow from './ShopNow';
 
 const HomePage = () => {
-    return (
-        <div className='h-screen'>
-            
-        </div>
-    );
+  return (
+    <div className=''>
+      <Banner />
+      <ShopNow />
+      <LatestCollection />
+    </div>
+  );
 };
 
 export default HomePage;
