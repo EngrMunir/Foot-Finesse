@@ -11,6 +11,7 @@ const Navbar = () => {
   // console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
+  console.log(pathName);
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -122,7 +123,7 @@ const Navbar = () => {
           ) : session?.status === 'unauthenticated' ? (
             <div className='flex items-center gap-2'>
               <Link href='/login'>
-                <button className='btn btn-sm rounded-2xl text-white'>
+                <button className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black'>
                   Login <BiLogIn />
                 </button>
               </Link>
