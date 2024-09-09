@@ -1,6 +1,5 @@
 import { connectDb } from "@/app/lib/connectDb"
 
-
 export const GET = async ()=>{
     const db = await connectDb()
     const shoesCollection = db?.collection('shoes')
