@@ -4,9 +4,10 @@ import React from 'react';
 import { IoIosLock } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import Link from 'next/link';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 const page = () => {
-    const handleSignIn=async(e:any)=>{
+
+    const handleSignIn=async(e)=>{
         e.preventDefault()
         const form = e.target
         const email =form.email.value
