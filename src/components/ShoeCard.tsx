@@ -6,24 +6,29 @@ interface ShoeCardProps {
   shoe: {
     name: string;
     description: string;
-    imageUrl: string;
+    image: string;
     price: number;
+    shortDescription: string;
+    shoeName: string;
   };
 }
 
 // Update the component to accept props
 const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
-    const {category,discountPrice,id,image, price,rating,shoeName,shortDescription,_id}= shoe;
+  const { image, price, shortDescription, shoeName } = shoe;
+
   return (
     <div className="card bg-base-100 shadow-xl">
-      <figure>
+      {/* Container for Image with relative positioning */}
+      <div className="relative w-full h-60">
         <Image
           src={image}
-          width={70}
-          height={50}
-          alt=""
+          alt={shoeName}
+          layout="fill" // Allows the image to fill the container
+          objectFit="cover" // Adjusts the image to cover the container
+          className="rounded-t-xl"
         />
-      </figure>
+      </div>
       <div className="card-body">
         <h2 className="card-title">{shoeName}</h2>
         <p>{shortDescription}</p>

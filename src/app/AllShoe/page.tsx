@@ -21,7 +21,7 @@ const AllShoe = () => {
     },[session])
     return (
         <div className='mt-20 px-10'>
-            <h1>All Shoe:{shoes?.length}</h1>
+            <h1 className='text-3xl text-center font-semibold py-10'>Discover the Latest Trends in Shoes</h1>
            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
             {
                 shoes?.map((shoe, index) => (<ShoeCard key={index} shoe={shoe}/>))
