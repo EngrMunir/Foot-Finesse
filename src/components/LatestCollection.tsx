@@ -1,6 +1,39 @@
 import Image from 'next/image';
 import collectionImg from '../../public/assets/lc.jpg';
 
+const products: { id: number; name: string; image: string; price: number }[] = [
+  {
+    id: 1,
+    name: 'Nano Gym Shoes',
+    image: 'https://res.cloudinary.com/ahad-ali/image/upload/v1723818839/rebook_1_qhcfvz.webp',
+    price: 240,
+  },
+  {
+    id: 2,
+    name: 'Nano X4 Training Shoes',
+    image: 'https://res.cloudinary.com/ahad-ali/image/upload/v1723868834/rebook_4_mtfsfi.webp',
+    price: 248,
+  },
+  {
+    id: 3,
+    name: 'FloatZig 1 Shoes',
+    image: 'https://res.cloudinary.com/ahad-ali/image/upload/v1723868834/rebook_3_rqjuud.webp',
+    price: 343,
+  },
+  {
+    id: 4,
+    name: 'Classic Leather 2400 Shoes',
+    image: 'https://res.cloudinary.com/ahad-ali/image/upload/v1723868834/rebook_2_x7desy.webp',
+    price: 290,
+  },
+  {
+    id: 5,
+    name: 'Classic Leather 2400 Shoes',
+    image: 'https://res.cloudinary.com/ahad-ali/image/upload/v1723868834/rebook_5_wcfjsj.webp',
+    price: 223,
+  },
+];
+
 function LatestCollection() {
   return (
     <section className='mx-auto grid max-w-7xl grid-cols-2 items-center gap-5 py-20'>
@@ -20,6 +53,7 @@ function LatestCollection() {
       </div>
       <div>
         <h2 className='text-6xl font-semibold'>Discover Our Latest Collection</h2>
+        <div></div>
       </div>
     </section>
   );

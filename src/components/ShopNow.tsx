@@ -2,7 +2,7 @@
 
 function ShopNow() {
   return (
-    <section className={`min-h-[700px] bg-[url('../../public/assets/shopnow-bg.jpg')]`}>
+    <section className={`my-20 min-h-[700px] bg-[url('../../public/assets/shopnow-bg.jpg')]`}>
       <div className='mx-auto max-w-7xl px-2'>
         <div className='max-w-80 pt-16'>
           <h4 className='text-3xl font-light'>Casual Sport Shoes</h4>
