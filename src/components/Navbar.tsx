@@ -126,7 +126,7 @@ const Navbar = () => {
                   Login <BiLogIn />
                 </button>
               </Link>
-              <Link href='/register'>
+              <Link href='/signup'>
                 <button className='btn btn-sm rounded-2xl border-transparent bg-white text-black hover:text-white'>
                   Register <BiLogIn />
                 </button>
