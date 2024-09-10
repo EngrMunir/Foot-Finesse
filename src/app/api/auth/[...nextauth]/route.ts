@@ -7,6 +7,19 @@ import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import { AdapterUser } from "next-auth/adapters"; 
 import { Account, User } from "next-auth"; 
+import { Db } from 'mongodb';
+import { Session } from "next-auth"; 
+import { JWT } from "next-auth/jwt";
+
+interface CustomToken extends JWT {
+  image?: string;
+  phoneNumber?: string;
+  street?: string;
+  zip?: string;
+  country?: string;
+  city?: string;
+}
+
 
 // interface User {
 //   name: string;
@@ -19,7 +32,7 @@ import { Account, User } from "next-auth";
 // }
 
 
- const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   secret: "AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=",
   session: {
     strategy: "jwt",
@@ -86,16 +99,40 @@ import { Account, User } from "next-auth";
         } catch (error) {
           console.error("Error during sign-in:", error);
           throw new Error("Failed to sign in with provider");
-        }
+        }        
       }
-
-      // For other providers or no account, just allow sign-in
       return true;
     },
     
-    // async jwt({token}){
-      
-    // }
+    async jwt({ token, account, user }: { token: CustomToken; account?: any; user?: User }) {
+      // console.log('account',account)
+      // console.log('user',user)
+      const db: Db | undefined =await connectDb()
+      const userCollection = db.collection('users')
+      const currentUser = await userCollection.findOne({email:token.email})
+      //console.log(currentUser)
+        if(currentUser){
+          token.image = currentUser?.image
+          token.phoneNumber=currentUser?.phoneNumber
+          token.street=currentUser?.street
+          token.zip=currentUser?.zip
+          token.country=currentUser?.country
+          token.city=currentUser?.city
+        }    
+      return token
+    },
+  async session({ session, token }: { session: Session; token: CustomToken }) {
+      //console.log('token',token)
+      //console.log(session.user.photoURL)
+      session.user.image = token?.image
+      session.user.phoneNumber=token.phoneNumber
+      session.user.street=token.street
+      session.user.zip=token.zip
+      session.user.country=token.country
+      session.user.city=token.city
+      //console.log(session)
+      return session
+    }
   }
 };
 
