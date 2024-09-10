@@ -52,6 +52,7 @@ const Navbar = () => {
   if (pathName.includes('login') || pathName.includes('signup')) {
     return null;
   }
+  console.log(session)
   return (
     <div
       id='nav'
@@ -138,7 +139,7 @@ const Navbar = () => {
             </div>
           ) : (
             <button className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black' onClick={() => signOut()}>
-              Logout
+              Logout <BiLogIn />
             </button>
           )}
           {/* Buggy code need to remove------- */}
