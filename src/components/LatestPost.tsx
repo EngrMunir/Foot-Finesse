@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-
+import { MdKeyboardArrowRight } from 'react-icons/md';
 const LatestPost = () => {
   return (
     <div className='mx-auto max-w-7xl'>
@@ -18,25 +18,75 @@ const LatestPost = () => {
           </button>
         </div>
       </div>
-      <div className='grid grid-cols-8 mt-12 '>
-        <div className='col-span-3'>
-          <div className='relative h-[566px] w-96'>
+      <div className='mt-12 grid grid-cols-1 gap-6 md:grid-cols-8'>
+        <div className='md:col-span-3'>
+          <div className='relative h-[566px] w-[450/16rem]'>
             <Image
               src={'https://i.ibb.co.com/YBFvhcv/pic1.jpg'}
-              className='relative'
+              className='relative rounded-md'
               layout='fill'
               alt='blog.png'
             />
+            <p className='absolute bottom-4 left-4 rounded-md bg-black p-1 text-sm uppercase text-white'>
+              07 Sept 2024
+            </p>
           </div>
           <div className=''>
-            <h2 className='font-bold text-xl w-96 text-center '>Trendsetter Chronicles: Unveiling <br /> the Latest in Fashion</h2>
-            <p></p>
+            <h2 className='w-[450/16rem] text-center text-2xl font-bold'>
+              Trendsetter Chronicles: Unveiling <br /> the Latest in Fashion
+            </h2>
+            <p className='flex items-center justify-center text-center text-gray-500'>
+              Read more <MdKeyboardArrowRight className='text-xl' />
+            </p>
           </div>
         </div>
-        <div className='col-span-5'>
-            <div>
-                
+        <div className='md:col-span-5'>
+          <div className='flex border gap-4 bg-base-300 rounded-3xl'>
+            <div className='relative h-72 w-[304px]'>
+              <Image
+                src={'https://i.ibb.co.com/JytxtNY/pic3.jpg'}
+                className='relative rounded-tl-3xl rounded-bl-3xl'
+                layout='fill'
+                alt='blog.png'
+              />
             </div>
+            <div className='mt-6 flex flex-col flex-between '>
+               <div>
+               <p className='rounded-md bg-black p-1 text-sm uppercase w-24 text-white'>
+                  07 Sept 2024
+                </p>
+                <p className='text-2xl font-bold'>Chic & Unique: Personalized Fashion Finds</p>
+               </div>
+                <div>
+                <p className='flex items-center mt-32 text-gray-500'>
+              Read more <MdKeyboardArrowRight className='text-xl' /> </p>
+                </div>
+                
+              </div>
+          </div>
+          <div className='flex border mt-6 gap-4 bg-base-300 rounded-3xl'>
+            <div className='relative h-72 w-80'>
+              <Image
+                src={'https://i.ibb.co.com/FVGGsQ4/pic2.jpg'}
+                className='relative rounded-tl-3xl rounded-bl-3xl'
+                layout='fill'
+                alt='blog.png'
+              />
+            </div>
+            <div className='mt-6 flex flex-col flex-between '>
+               <div>
+               <p className='rounded-md bg-black p-1 text-sm uppercase w-24 text-white'>
+                  07 Sept 2024
+                </p>
+                <p className='text-2xl font-bold'>Dress to Impress: Elevate Your Everyday Style</p>
+               </div>
+                <div>
+                <p className='flex items-center mt-32 text-gray-500'>
+              Read more <MdKeyboardArrowRight className='text-xl' /> </p>
+                </div>
+                
+              </div>
+          </div>
         </div>
       </div>
     </div>

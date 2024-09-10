@@ -8,10 +8,10 @@ import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from "react-icons/fa6";
 const Navbar = () => {
   const session = useSession();
-  // console.log(session);
+  console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  console.log(pathName);
+  //console.log(pathName);
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -115,6 +115,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='navbar-end'>
+        {
+          session?.status === 'authenticated' ? <p><Link href='profile'>{session?.data?.user?.name}</Link></p> : <></>
+        }
         <button className='btn btn-circle btn-ghost'>
           <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
         </button>
