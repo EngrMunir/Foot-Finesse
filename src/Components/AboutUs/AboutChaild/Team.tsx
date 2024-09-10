@@ -1,23 +1,23 @@
 import Image from "next/image";
 
-import image6 from "/public/AboutUs/Image/pic6-6.jpg";
+import image6 from "../../../../public/AboutUs/Image/pic6-6.jpg";
 
 
 
 const Team = () => {
     return (
         <div>
-            <div className="bg-white dark:bg-gray-900 dark:text-gray-100">
+            <div className="">
                 <div className="container mx-auto space-y-16 px-4 py-16 lg:px-8 lg:py-32 xl:max-w-7xl">
                     {/* Heading */}
                     <div className="text-center">
                         <div className="mb-1 text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-500">
                             Real People
                         </div>
-                        <h2 className="mb-4 text-4xl font-black text-black dark:text-white">
+                        <h2 className="mb-4 text-4xl font-black e">
                             Meet our talented team
                         </h2>
-                        <h3 className="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 dark:text-gray-300">
+                        <h3 className="mx-auto text-xl font-medium leading-relaxed  lg:w-2/3 ">
                             They are working nonstop behind the scenes to help you build
                             better products, web services and websites.
                         </h3>

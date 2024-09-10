@@ -4,13 +4,13 @@
 const AboutTitle = () => {
     return (
         <div>
-            <div className="bg-[#FAF9F6] dark:bg-gray-900 dark:text-gray-100">
+            <div className="">
                 <div className="container mx-auto space-y-16 px-4 py-16 ">
                     <div className="text-center">
-                        <h2 className="mb-4 text-4xl font-black text-black dark:text-white">
+                        <h2 className="mb-4 text-4xl  font-black ">
                             Browse Our Extensive Range of Shoes
                         </h2>
-                        <h3 className="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 dark:text-gray-300">
+                        <h3 className="mx-auto text-xl font-medium leading-relaxed text-gray-700 lg:w-2/3 ">
                             We are on a mission to redefine fashion blend style, quality, & into a into every garment we offer. believe what you wear is an of your It a long fact looking at its layout. unique personality, & it and aspirations.
                         </h3>
                     </div>

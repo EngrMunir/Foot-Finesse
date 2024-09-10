@@ -9,7 +9,7 @@ const Demo = () => {
     return (
         <div>
 
-            <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
+            <section className="p-4 lg:p-8 ">
                 <div className="container mx-auto space-y-12">
 
                     {/* Part 1 */}

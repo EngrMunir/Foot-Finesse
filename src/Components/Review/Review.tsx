@@ -5,7 +5,7 @@ import ReviewSlider from "./ReviewChild/ReviewSlider/ReviewSlider";
 
 const Review = () => {
     return (
-        <div>
+        <div className="">
 
             {/* Review Home section */}
             <div>
