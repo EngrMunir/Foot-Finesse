@@ -7,9 +7,9 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 const page = () => {
 
-    const handleSignIn=async(e)=>{
+    const handleSignIn=async(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        const form = e.target
+        const form = e.currentTarget
         const email =form.email.value
         const password =form.password.value
         const res =await signIn("credentials",{

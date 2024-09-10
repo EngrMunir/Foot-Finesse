@@ -9,7 +9,7 @@ const HomePage = () => {
       <Banner />
       <ShoeSection />
       <ShopNow />
-      <LatestCollection />
+      <LatestCollection/>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const WishListCards = () => {
     }, [])
 
     return (
-        <div className="grid grid-cols-1 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-9">
+        <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
             {
                 shoes?.map((shoe) => (
                     <div key={shoe._id} className=" group relative cursor-zoom-in">
@@ -40,8 +40,8 @@ const WishListCards = () => {
                             <h3 className="text-sm  z-10 mt-5 duration-300 hover:text-[#DF2626]">{shoe.category}</h3>
                             <h3 className="cursor-pointer z-50 text-base font-semibold duration-300 w-fit hover:text-[#DF2626]">{shoe.shoeName}</h3>
                             <div className="flex mt-2 gap-1 items-end">
-                                <p className="text-xl text-[#DF2626] font-medium">${shoe.discountPrice}</p>
-                                <p className="text-base line-through italic">${shoe.price}</p>
+                                <p className="text-xl text-[#DF2626] font-bold">${shoe.discountPrice}</p>
+                                <p className="text-base font-bold line-through italic">${shoe.price}</p>
                             </div>
                             <div className="font-medium flex items-center mt-5 scale-y-0 group-hover:scale-y-100 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100">
                                 <button className="border-black shadow-2xl z-10 border rounded-[4px] mr-2 leading-4 hover:border-[#DF2626] duration-500 px-6 py-2 hover:bg-[#DF2626] text-black hover:text-white">ADD TO  <span className="block">CARD</span></button>
