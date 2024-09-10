@@ -1,7 +1,5 @@
 import { MongoClient,Db, ServerApiVersion } from "mongodb";
 
-let db;
-
 export const connectDb = async (): Promise<Db | undefined> => {
   try {
     const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_DB_USER}:${process.env.NEXT_PUBLIC_DB_PASSWORD}@cluster0.6qdai.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
