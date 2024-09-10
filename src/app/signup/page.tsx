@@ -1,4 +1,5 @@
 "use client"
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { FormEvent } from 'react';
@@ -28,6 +29,10 @@ const page = () => {
         })
         const result = await res.json();
         console.log(result)
+    }
+    const handleSocialLogin=async(handler:string)=>{
+        const res =await signIn(handler)
+        console.log(res)
     }
     return (
         <div className='flex flex-col h-screen md:flex-row '>
@@ -59,9 +64,9 @@ const page = () => {
             </form>
             <div className="divider text-xs font-medium text-secondary md:mx-36">OR LOGIN WITH</div>
             <div className='flex items-center justify-between gap-2'>
-                <div className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Google</div>
-                <div className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Facebook</div>
-            </div>
+                    <button onClick={()=>handleSocialLogin('google')} className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Google</button>
+                    <button onClick={()=>handleSocialLogin('facebook')} className='bg-primary text-white px-6 text-sm font-medium py-1 rounded-full'>Facebook</button>
+                </div>
         </div>
     </div>
     );

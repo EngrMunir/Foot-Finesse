@@ -1,11 +1,13 @@
-const bcrypt = require("bcrypt");
+import bcrypt from 'bcrypt' 
 import { connectDb } from "@/app/lib/connectDb";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
 
-export const authOptions: NextAuthOptions = {
+
+ const authOptions: NextAuthOptions = {
   secret: "AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=",
   session: {
     strategy: "jwt",
@@ -48,6 +50,10 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
         clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
         clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string
+      }),
+      FacebookProvider({
+        clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string,
+        clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET as string
       })
   ],
 };

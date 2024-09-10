@@ -1,4 +1,14 @@
-[
+interface Shoe {
+  id: number;
+  category: string;
+  shoeName: string;
+  price: number;
+  discountPrice: number;
+  shortDescription: string;
+  rating: number;
+  image: string;
+}
+export const shoes: Shoe[]=[
     {
       "id": 1,
       "category": "Kid's Shoes",

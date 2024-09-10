@@ -1,6 +1,6 @@
 import { connectDb } from "@/app/lib/connectDb"
 import { NextRequest, NextResponse } from "next/server"
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt'
 
 export const POST =async(req:NextRequest):Promise<NextResponse>=>{
     const userData=await req.json() 

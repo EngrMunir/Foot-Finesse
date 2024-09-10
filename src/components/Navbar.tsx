@@ -11,6 +11,7 @@ const Navbar = () => {
   // console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
+  console.log(pathName);
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -54,7 +55,7 @@ const Navbar = () => {
   return (
     <div
       id='nav'
-      className={`navbar ${navMoved ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 rounded-full duration-500`}
+      className={`navbar ${navMoved || pathName !== '/' ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 rounded-full duration-500`}
     >
       <div className='navbar-start'>
         {/* Mobile Menu --------*/}
@@ -122,11 +123,11 @@ const Navbar = () => {
           ) : session?.status === 'unauthenticated' ? (
             <div className='flex items-center gap-2'>
               <Link href='/login'>
-                <button className='btn btn-sm rounded-2xl text-white'>
+                <button className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black'>
                   Login <BiLogIn />
                 </button>
               </Link>
-              <Link href='/register'>
+              <Link href='/signup'>
                 <button className='btn btn-sm rounded-2xl border-transparent bg-white text-black hover:text-white'>
                   Register <BiLogIn />
                 </button>
