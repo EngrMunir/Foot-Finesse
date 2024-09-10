@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 const AllShoe = () => {
     const {data: session } = useSession();
     console.log(session)
-    const [shoes, setShoes] = useState<Shoe[]>([]);
+    const [shoes, setShoes] = useState([]);
 
     const loadShoes = async()=>{
         const res =await fetch('http://localhost:3000/AllShoe/api/get-all')
