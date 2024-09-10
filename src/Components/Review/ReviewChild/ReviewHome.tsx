@@ -28,7 +28,7 @@ const ReviewHome = () => {
                                 8000k+
                             </dt>
                             <dd className="text-sm font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-500">
-                                Sals
+                                Sales
                             </dd>
                         </dl>
                     </div>
