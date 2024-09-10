@@ -1,16 +1,15 @@
-import bcrypt from "bcrypt"
-import { connectDb } from "@/app/lib/connectDb";
-import { NextAuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
+import bcrypt from 'bcrypt';
+import { connectDb } from '@/app/lib/connectDb';
+import { NextAuthOptions } from 'next-auth';
+import NextAuth from 'next-auth/next';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
+import FacebookProvider from 'next-auth/providers/facebook';
 
-
-export const authOptions: NextAuthOptions = {
-  secret: "AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=",
+const authOptions: NextAuthOptions = {
+  secret: 'AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=',
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60,
   },
   providers: [
@@ -28,33 +27,30 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         const db = await connectDb();
-        const userCollection = db?.collection("users");
+        const userCollection = db?.collection('users');
         const currentUser = await userCollection?.findOne({ email: email });
         if (!currentUser) {
           return null;
         }
-        const passwordMatch = bcrypt.compareSync(
-          password,
-          currentUser.password
-        );
+        const passwordMatch = bcrypt.compareSync(password, currentUser.password);
         if (!passwordMatch) {
           return null;
         }
         return {
-            id: currentUser._id.toString(), 
-            email: currentUser.email,
-            name: currentUser.name,
-          };
+          id: currentUser._id.toString(),
+          email: currentUser.email,
+          name: currentUser.name,
+        };
       },
     }),
     GoogleProvider({
-        clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
-        clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string
-      }),
-      FacebookProvider({
-        clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string,
-        clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET as string
-      })
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string,
+    }),
+    FacebookProvider({
+      clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string,
+      clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET as string,
+    }),
   ],
 };
 
