@@ -15,9 +15,9 @@ export const GET = async()=>{
     try {
         const db = await connectDb()
         const shoesCollection = db?.collection<Shoe>('shoes')
-        console.log(shoesCollection)
+        //console.log(shoesCollection)
         const result = await shoesCollection?.aggregate([{ $sample: { size: 6 } } ]).toArray() 
-        console.log(result)
+        //console.log(result)
         return NextResponse.json(result)
     } catch (error) {
         console.log(error)        

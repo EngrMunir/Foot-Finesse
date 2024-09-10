@@ -1,5 +1,6 @@
 import Banner from './Banner';
 import LatestCollection from './LatestCollection';
+import LatestPost from './LatestPost';
 import ShoeSection from './ShoeSection';
 import ShopNow from './ShopNow';
 
@@ -9,7 +10,8 @@ const HomePage = () => {
       <Banner />
       <ShoeSection />
       <ShopNow />
-      <LatestCollection />
+      <LatestCollection/>
+      <LatestPost/>
     </div>
   );
 };
