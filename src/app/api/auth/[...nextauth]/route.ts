@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt"
 import { connectDb } from "@/app/lib/connectDb";
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
