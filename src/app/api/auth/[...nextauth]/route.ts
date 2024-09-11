@@ -5,6 +5,18 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
+import { AdapterUser } from "next-auth/adapters"; 
+import { Account, User } from "next-auth"; 
+
+// interface User {
+//   name: string;
+//   email: string;
+//   image: string;
+// }
+
+// interface Account {
+//   provider: 'google' | 'facebook' | string; 
+// }
 
 
  const authOptions: NextAuthOptions = {
@@ -57,7 +69,33 @@ import FacebookProvider from "next-auth/providers/facebook";
       })
   ],
   callbacks:{
+    async signIn(params: { user: User | AdapterUser; account: Account | null }) {
+      const { user, account } = params;
+
+      if (account?.provider === 'google' || account?.provider === 'facebook') {
+        const { name, image, email } = user;
+
+        try {
+          const db= await connectDb();
+          const userCollection = db?.collection('users');
+          const isExist = await userCollection?.findOne({ email });
+          if (!isExist) {
+            const result = await userCollection?.insertOne(user);
+            return true
+          }
+        } catch (error) {
+          console.error("Error during sign-in:", error);
+          throw new Error("Failed to sign in with provider");
+        }
+      }
+
+      // For other providers or no account, just allow sign-in
+      return true;
+    },
     
+    // async jwt({token}){
+      
+    // }
   }
 };
 
