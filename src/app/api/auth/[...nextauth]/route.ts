@@ -32,7 +32,7 @@ interface CustomToken extends JWT {
 // }
 
 
- const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   secret: "AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=",
   session: {
     strategy: "jwt",

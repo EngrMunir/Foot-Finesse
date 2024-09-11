@@ -3,21 +3,56 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+interface CustomUser {
+  name?: string;
+  phoneNumber?: string;
+  zip?: string;
+  street?: string;
+  city?: string;
+  country?: string;
+  email?: string;
+}
 
 const page = () => {
+  const session = useSession();
     const [fullName,setFullName]=useState<string>('')
     const [zip,setZip]=useState<string>('')
     const [city,setCity]=useState<string>('')
     const [country,setCountry]=useState<string>('')
     const [street,setStreet]=useState<string>('')
     const [phoneNumber,setPhoneNumber]=useState<string>('')
-    const handleEditInfo =()=>{
-      console.log('name')
+    const [email,setEmail]=useState<string>('')
+    useEffect(() => {
+      const user = session?.data?.user as CustomUser;
+      if (user?.name) {
+        setFullName(user.name);
+        setPhoneNumber(user.phoneNumber || "");
+        setZip(user.zip || '');
+        setStreet(user.street || '');
+        setCity(user.city || '');
+        setCountry(user.country || '');
+        setEmail(user.email || '');
+      }
+    }, [session]);
+    const handleEditInfo =async(e:any)=>{
+     e.preventDefault()
+     const form = e.target
+     const name = form.name.value
+     const zip = form.zip.value
+     const city = form.city.value
+     const country = form.country.value
+     const street = form.street.value
+     const phoneNumber = form.phoneNumber.value
+     const userData={name,zip,city,country,street,phoneNumber}
+     console.log(userData)
+     const res =await axios.post('http://localhost:3000/api/editProfile',userData)
+     console.log(res.data)
     }
     const imageHostingKey = process.env.NEXT_PUBLIC_IMAGE_API
     const imageHostingApi =`https://api.imgbb.com/1/upload?key=${imageHostingKey}`
-  const session = useSession();
+ 
   if (session?.status === 'unauthenticated') {
     redirect('/');
   }
@@ -92,7 +127,7 @@ const page = () => {
                 type="text"
                 placeholder=""
                 name="name"
-                value={session.data?.user?.email}
+                value={email}
                 className="input input-bordered mt-2 bg-slate-300 max-w-sm"
                 readOnly
                 required
@@ -100,7 +135,7 @@ const page = () => {
             </div>
             <div className="form-control">
               <input
-                type="number"
+                type="text"
                 placeholder="Your phone Number"
                 name="phoneNumber"
                 value={phoneNumber}
