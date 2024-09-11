@@ -56,6 +56,9 @@ import FacebookProvider from "next-auth/providers/facebook";
         clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_SECRET as string
       })
   ],
+  callbacks:{
+    
+  }
 };
 
 const handler = NextAuth(authOptions);
