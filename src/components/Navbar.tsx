@@ -11,6 +11,7 @@ const Navbar = () => {
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Drawer state
   //console.log(pathName);
 
   useEffect(() => {
@@ -53,13 +54,13 @@ const Navbar = () => {
     return null;
   }
   console.log(session);
-  
+
   return (
     <div
       id='nav'
-      className={`navbar ${navMoved || pathName !== '/' ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 rounded-full duration-500`}
+      className={`navbar ${navMoved || pathName !== '/' ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 duration-500 lg:rounded-full`}
     >
-      <div className='navbar-start'>
+      <div className='navbar-start hidden lg:flex'>
         {/* Mobile Menu --------*/}
         {/* <div className='dropdown'>
             <div tabIndex={0} role='button' className='btn btn-ghost btn-circle'>
@@ -106,24 +107,33 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      <div className='navbar-center'>
+      <div className='navbar-start lg:navbar-center'>
         <Link href={'/'} className='flex items-center'>
           <TbShoe className='me-3 text-3xl' />
           <p className='font-medium'>
-            <span className='font-light text-slate-400'>FOOT</span>
+            <span className='font-light text-white lg:text-slate-400'>FOOT</span>
             FINESSE
           </p>
         </Link>
       </div>
-      <div className='navbar-end'>
-        {
-          session?.status === 'authenticated' ? <p><Link href='profile'>{session?.data?.user?.name}</Link></p> : <></>
-        }
+      <div className='navbar-end hidden lg:flex'>
+        {session?.status === 'authenticated' ? (
+          <p>
+            <Link href='profile'>{session?.data?.user?.name}</Link>
+          </p>
+        ) : (
+          <></>
+        )}
         <button className='btn btn-circle btn-ghost'>
-          <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
+          <Link href={'/carts'}>
+            <BiCart className='text-2xl' />
+          </Link>
         </button>
-        <button className='btn btn-circle mr-2 btn-ghost'>
-         <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
+        <button className='btn btn-circle btn-ghost mr-2'>
+          <Link href={'/wishlist'}>
+            {' '}
+            <FaHeartCirclePlus className='text-2xl' />
+          </Link>
         </button>
         <div>
           {session?.status === 'loading' ? (
@@ -165,6 +175,94 @@ const Navbar = () => {
           )} */}
         </div>
       </div>
+
+      {/* Mobile Hamburger Menu */}
+      <div className='navbar-end lg:hidden'>
+        <button
+          className='btn btn-circle btn-ghost z-[100] bg-black text-white'
+          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        >
+          {isDrawerOpen ? (
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-6 w-6'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M6 18L18 6M6 6l12 12'
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-6 w-6'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M4 6h16M4 12h16m-7 6h7'
+              />
+            </svg>
+          )}
+        </button>
+      </div>
+
+      {/* Sidebar Drawer */}
+      <div
+        className={`fixed inset-0 z-50 h-screen w-full bg-white shadow-lg transition-transform duration-300 ${
+          isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        {/* <button
+          className='z-60 btn btn-circle btn-ghost absolute right-2 top-2 bg-black text-white'
+          onClick={() => setIsDrawerOpen(false)}
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-6 w-6'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='2'
+              d='M6 18L18 6M6 6l12 12'
+            />
+          </svg>
+        </button> */}
+        <ul className='w-full p-4 text-left text-xl font-bold text-black'>
+          {navItems.map((navItem) => (
+            <li key={navItem.path} className='border-b border-gray-300'>
+              <Link
+                className='block px-4 py-2 hover:bg-orange-200'
+                href={navItem.path}
+                onClick={() => setIsDrawerOpen(false)}
+              >
+                {navItem.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Backdrop */}
+      {isDrawerOpen && (
+        <div
+          className='fixed inset-0 z-40 bg-black opacity-50'
+          onClick={() => setIsDrawerOpen(false)}
+        />
+      )}
     </div>
   );
 };
