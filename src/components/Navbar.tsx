@@ -107,11 +107,11 @@ const Navbar = () => {
           ))}
         </ul>
       </div>
-      <div className='navbar-start lg:navbar-center'>
+      <div className='navbar-center'>
         <Link href={'/'} className='flex items-center'>
           <TbShoe className='me-3 text-3xl' />
           <p className='font-medium'>
-            <span className='font-light text-white lg:text-slate-400'>FOOT</span>
+            <span className='font-light lg:text-slate-400'>FOOT</span>
             FINESSE
           </p>
         </Link>
@@ -177,7 +177,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Hamburger Menu */}
-      <div className='navbar-end lg:hidden'>
+      <div className='flex w-full items-end justify-end lg:hidden'>
         <button
           className='btn btn-circle btn-ghost z-[100] bg-black text-white'
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -218,7 +218,7 @@ const Navbar = () => {
 
       {/* Sidebar Drawer */}
       <div
-        className={`fixed inset-0 z-50 h-screen w-full bg-white shadow-lg transition-transform duration-300 ${
+        className={`fixed inset-0 z-50 h-screen w-full bg-white shadow-lg transition-transform duration-300 lg:hidden ${
           isDrawerOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
