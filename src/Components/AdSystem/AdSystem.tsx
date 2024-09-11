@@ -1,17 +1,17 @@
 import Image from "next/image";
 
 import comImagee from "../../../public/AboutUs/Image/adv-2.png"
-// import { AiTwotoneMail } from "react-icons/ai";
+import { AiTwotoneMail } from "react-icons/ai";
 
 
 
 const AdSystem = () => {
     return (
-        <div className="mt-28">
+        <div className="mt-28 ">
 
-            <div className="grid grid-cols-2 p-8 justify-center items-center text-center">
+            <div className="grid grid-cols-2 p-8 justify-center items-center text-center  ">
 
-                <div>
+                <div className="">
                     {/* Button */}
                     <button className="btn btn-circle btn-outline">
                         <svg
@@ -43,18 +43,19 @@ const AdSystem = () => {
                         </div>
                     </div>
 
-                    <form action="#" className=" space-y-4 rounded-lg  shadow-lg sm:p-6 lg:p-8">
+                    <form action="#" className=" space-y-4 rounded-lg   sm:p-6 lg:p-8">
                         <div>
                             <div className="relative">
                                 <input
                                     type="email"
-                                    className="w-full border rounded-lg border-black p-4 pe-12 text-sm shadow-sm"
+                                    className="w-full  border rounded-lg border-black p-4 pe-12 text-sm shadow-sm"
                                     placeholder="Inpute your Email"
                                 />
 
-                                {/* <label className="absolute inset-y-0 end-0 grid place-content-center px-4">
+
+                                <label className="absolute inset-y-0 end-0 grid place-content-center px-4 p-2">
                                     <AiTwotoneMail />
-                                </label> */}
+                                </label>
                             </div>
                         </div>
 
