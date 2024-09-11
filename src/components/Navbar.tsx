@@ -53,6 +53,7 @@ const Navbar = () => {
     return null;
   }
   console.log(session);
+  
   return (
     <div
       id='nav'
@@ -119,13 +120,10 @@ const Navbar = () => {
           session?.status === 'authenticated' ? <p><Link href='profile'>{session?.data?.user?.name}</Link></p> : <></>
         }
         <button className='btn btn-circle btn-ghost'>
-          <BiCart className='text-2xl' />
+          <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
         </button>
-        <button className='btn btn-circle btn-ghost'>
-          <Link href={'/wishlist'}>
-            {' '}
-            <FaHeartCirclePlus className='text-2xl' />
-          </Link>
+        <button className='btn btn-circle mr-2 btn-ghost'>
+         <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
         </button>
         <div>
           {session?.status === 'loading' ? (
