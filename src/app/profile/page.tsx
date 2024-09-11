@@ -65,6 +65,13 @@ const page = () => {
       }
     })
     console.log(res.data)
+    if(res.data.success === true){
+      console.log(res.data.data.image.url)
+      const image= res.data.data.image.url
+      const result = await axios.post('http://localhost:3000/api/editPhoto',{image})
+      console.log(result.data)
+      window.location.reload()
+    }
 
   }
   return (
