@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
-import { FaHeartCirclePlus } from "react-icons/fa6";
+import { FaHeartCirclePlus } from 'react-icons/fa6';
 const Navbar = () => {
   const session = useSession();
   console.log(session);
@@ -52,7 +52,7 @@ const Navbar = () => {
   if (pathName.includes('login') || pathName.includes('signup')) {
     return null;
   }
-  console.log(session)
+  console.log(session);
   return (
     <div
       id='nav'
@@ -122,7 +122,10 @@ const Navbar = () => {
           <BiCart className='text-2xl' />
         </button>
         <button className='btn btn-circle btn-ghost'>
-         <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
+          <Link href={'/wishlist'}>
+            {' '}
+            <FaHeartCirclePlus className='text-2xl' />
+          </Link>
         </button>
         <div>
           {session?.status === 'loading' ? (
@@ -141,7 +144,10 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            <button className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black' onClick={() => signOut()}>
+            <button
+              className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black'
+              onClick={() => signOut()}
+            >
               Logout <BiLogIn />
             </button>
           )}
