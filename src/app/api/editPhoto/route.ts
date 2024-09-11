@@ -6,13 +6,13 @@ import { authOptions } from "../auth/[...nextauth]/route";
 export const POST=async(req:NextRequest):Promise<NextResponse> =>{
     const db= await connectDb()
     const userCollection = await db?.collection("users")
-    const image =await req.json()
-    //console.log(image)
+    const data =await req.json()
+    console.log(data)
     try {
         const session = await getServerSession(authOptions)
         const updateDoc ={
             $set:{
-                image: image
+                image: data.image
             }
         }
        const result = await userCollection?.updateOne({email: session?.user?.email},updateDoc) 
