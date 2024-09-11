@@ -53,6 +53,7 @@ const Navbar = () => {
     return null;
   }
   console.log(session);
+  
   return (
     <div
       id='nav'
@@ -121,16 +122,8 @@ const Navbar = () => {
         <button className='btn btn-circle btn-ghost'>
           <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
         </button>
-<<<<<<< HEAD
-        <button className='btn btn-circle btn-ghost'>
-          <Link href={'/wishlist'}>
-            {' '}
-            <FaHeartCirclePlus className='text-2xl' />
-          </Link>
-=======
         <button className='btn btn-circle mr-2 btn-ghost'>
          <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
->>>>>>> 35a57fc33db03a1e5ab633e1835e104dbba088e9
         </button>
         <div>
           {session?.status === 'loading' ? (
