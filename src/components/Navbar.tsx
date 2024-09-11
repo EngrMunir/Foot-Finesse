@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
-import { FaHeartCirclePlus } from "react-icons/fa6";
+import { FaHeartCirclePlus } from 'react-icons/fa6';
 const Navbar = () => {
   const session = useSession();
-  // console.log(session);
+  console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  console.log(pathName);
+  //console.log(pathName);
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -52,7 +52,8 @@ const Navbar = () => {
   if (pathName.includes('login') || pathName.includes('signup')) {
     return null;
   }
-  console.log(session)
+  console.log(session);
+  
   return (
     <div
       id='nav'
@@ -115,10 +116,13 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='navbar-end'>
+        {
+          session?.status === 'authenticated' ? <p><Link href='profile'>{session?.data?.user?.name}</Link></p> : <></>
+        }
         <button className='btn btn-circle btn-ghost'>
-          <BiCart className='text-2xl' />
+          <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
         </button>
-        <button className='btn btn-circle btn-ghost'>
+        <button className='btn btn-circle mr-2 btn-ghost'>
          <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
         </button>
         <div>
@@ -138,7 +142,10 @@ const Navbar = () => {
               </Link>
             </div>
           ) : (
-            <button className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black' onClick={() => signOut()}>
+            <button
+              className='btn btn-sm rounded-2xl border-black bg-black text-white hover:text-black'
+              onClick={() => signOut()}
+            >
               Logout <BiLogIn />
             </button>
           )}

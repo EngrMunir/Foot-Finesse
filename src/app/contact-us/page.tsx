@@ -7,7 +7,7 @@ import { BiSupport } from 'react-icons/bi';
 import { PiHandshakeFill } from 'react-icons/pi';
 import Image from 'next/image';
 
-function page() {
+function contact() {
   return (
     <>
       <div className='container mx-auto'>
@@ -80,7 +80,7 @@ function page() {
           {/* form section */}
           <div className='w-1/2 rounded-lg border-[1px] border-secondary p-10'>
             <p className='mb-8 text-center text-4xl font-medium text-primary'>Get In Touch</p>
-            <form action='' className='space-y-3'>
+            <form className='space-y-3'>
               <div className='w-full'>
                 <label className='mb-2 block text-primary'>Name</label>
                 <input
@@ -133,4 +133,4 @@ function page() {
   );
 }
 
-export default page;
+export default contact;
