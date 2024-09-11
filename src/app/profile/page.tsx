@@ -21,6 +21,7 @@ const page = () => {
       }
     })
     console.log(res.data)
+    
   }
   return (
     <div className='container mx-auto'>
