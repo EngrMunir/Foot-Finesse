@@ -12,7 +12,8 @@ const AllShoe = () => {
     const numberOfPages =Math.ceil(count/shoePerPage);
     const [currentPage, setCurrentPage]=useState(0);
     const pages =[];
-    for(let i =0; i<numberOfPages;i++){
+
+    for(let i =0; i< numberOfPages;i++){
         pages.push(i)
     }
         

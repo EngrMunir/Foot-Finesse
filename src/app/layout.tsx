@@ -4,6 +4,8 @@ import './globals.css';
 import { Roboto } from 'next/font/google';
 import AuthProvider from './services/AuthProvider';
 import Navbar from '@/components/Navbar';
+import CartProvider from '@/providers/CartProvider';
+import { Toaster } from 'react-hot-toast';
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -36,10 +38,13 @@ export default function RootLayout({
     <html lang='en' data-theme='light'>
       <body className={roboto.className}>
         <AuthProvider>
-          <div>
-            <Navbar />
-            {children}
-          </div>
+          <CartProvider>
+            <div>
+              <Navbar />
+              {children}
+            </div>
+            <Toaster reverseOrder={true} />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>

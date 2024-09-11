@@ -19,7 +19,7 @@ interface CartProps {
 }
 
 const Cart = ({ shoe, idx, length }: CartProps) => {
-  const { image, id, discountPrice, shoeName } = shoe;
+  const { image, id, discountPrice, shoeName, quantity } = shoe;
 
   const deleteCart = (id: number) => {};
   const updateQuantityOfProduct = (id: number, value: boolean) => {};
@@ -54,7 +54,7 @@ const Cart = ({ shoe, idx, length }: CartProps) => {
         </div>
         <div className='flex flex-col justify-between'>
           <GoPlus
-            onClick={() => deleteCart(_id)}
+            onClick={() => deleteCart(id)}
             className='ml-auto rotate-45 cursor-pointer text-3xl text-[#939393]'
           />
           <p className='text-xl font-semibold text-black'>€{discountPrice}</p>
