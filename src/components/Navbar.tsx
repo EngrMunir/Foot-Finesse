@@ -119,13 +119,18 @@ const Navbar = () => {
           session?.status === 'authenticated' ? <p><Link href='profile'>{session?.data?.user?.name}</Link></p> : <></>
         }
         <button className='btn btn-circle btn-ghost'>
-          <BiCart className='text-2xl' />
+          <Link href={'/carts'}><BiCart className='text-2xl' /></Link>
         </button>
+<<<<<<< HEAD
         <button className='btn btn-circle btn-ghost'>
           <Link href={'/wishlist'}>
             {' '}
             <FaHeartCirclePlus className='text-2xl' />
           </Link>
+=======
+        <button className='btn btn-circle mr-2 btn-ghost'>
+         <Link href={'/wishlist'}> <FaHeartCirclePlus className='text-2xl'/></Link>
+>>>>>>> 35a57fc33db03a1e5ab633e1835e104dbba088e9
         </button>
         <div>
           {session?.status === 'loading' ? (
