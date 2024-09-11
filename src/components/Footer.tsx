@@ -3,8 +3,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="footer bg-base-400 text-base-content p-10">
+        <div className="">
+            <footer className="footer  text-base-content p-10">
                 <aside>
                     <Image src="/assets/logo.jpg" alt='' width={50} height={50} />
                     <p>
@@ -39,6 +39,7 @@ const Footer = () => {
                     </p>
                 </div>
             </footer>
+
         </div>
 
     );

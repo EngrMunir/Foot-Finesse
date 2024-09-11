@@ -14,6 +14,7 @@ const AboutTitle = () => {
                             We are on a mission to redefine fashion blend style, quality, & into a into every garment we offer. believe what you wear is an of your It a long fact looking at its layout. unique personality, & it and aspirations.
                         </h3>
                     </div>
+
                     {/* Button  */}
                     <div className="justify-center items-center text-center grid">
                         <a
@@ -31,6 +32,7 @@ const AboutTitle = () => {
                             </span>
                         </a>
                     </div>
+                    
                 </div>
 
             </div>
