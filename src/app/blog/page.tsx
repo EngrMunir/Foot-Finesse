@@ -20,7 +20,6 @@ interface Blog {
 
 function page() {
   const { data: session } = useSession();
-  console.log(session);
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   const loadBlogs = async () => {
