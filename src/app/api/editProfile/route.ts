@@ -9,6 +9,7 @@ export const POST =async(req:NextRequest):Promise<NextResponse>=>{
     const userData = await req.json()
     try {
         const session =await getServerSession(authOptions)
+        const user = await userCollection?.findOne()
         const updateDoc ={
             $set:{
                 ...userData
