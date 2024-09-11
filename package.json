@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "@nextui-org/card": "^2.0.33",
     "@nextui-org/react": "^2.4.6",
+    "antd": "^5.20.6",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "mongodb": "^6.8.1",

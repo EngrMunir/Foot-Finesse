@@ -23,7 +23,6 @@ const Cart = ({ shoe, idx, length }: CartProps) => {
 
   const deleteCart = (id: number) => {};
   const updateQuantityOfProduct = (id: number, value: boolean) => {};
-  console.log(shoe);
 
   return (
     <div>
