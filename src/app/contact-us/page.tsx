@@ -6,8 +6,27 @@ import { TfiWorld } from 'react-icons/tfi';
 import { BiSupport } from 'react-icons/bi';
 import { PiHandshakeFill } from 'react-icons/pi';
 import Image from 'next/image';
+import axios from 'axios';
+
+interface Email {
+  name : string,
+  email: string,
+  subject: string,
+  message : string
+}
 
 function contact() {
+  const handleEmail =async (e:any)=>{
+    e.preventDefault()
+    const form =e.target 
+    const name =form.name.value
+    const email =form.email.value
+    const subject =form.subject.value
+    const message =form.message.value
+    const emailData: Email ={name,email,subject,message}
+    const res =await axios.post('http://localhost:3000/api/contact',emailData)
+    console.log(res.data)
+  }
   return (
     <>
       <div className='container mx-auto'>
@@ -80,12 +99,20 @@ function contact() {
           {/* form section */}
           <div className='w-1/2 rounded-lg border-[1px] border-secondary p-10'>
             <p className='mb-8 text-center text-4xl font-medium text-primary'>Get In Touch</p>
-            <form className='space-y-3'>
+            <form onSubmit={handleEmail}className='space-y-3'>
               <div className='w-full'>
                 <label className='mb-2 block text-primary'>Name</label>
                 <input
                   className='w-full rounded-md border border-primary bg-inherit px-3 py-2 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary'
                   name='name'
+                  type='text'
+                />
+              </div>
+              <div className='w-full'>
+                <label className='mb-2 block text-primary'>Subject</label>
+                <input
+                  className='w-full rounded-md border border-primary bg-inherit px-3 py-2 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary'
+                  name='subject'
                   type='text'
                 />
               </div>
@@ -100,7 +127,7 @@ function contact() {
               <div className='w-full'>
                 <label className='mb-2 block text-primary'>Message</label>
                 <textarea
-                  name='Message'
+                  name='message'
                   rows={5}
                   className='w-full rounded-md border border-primary bg-inherit px-3 py-2 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary'
                 ></textarea>
