@@ -6,6 +6,14 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FaCommentDots } from 'react-icons/fa6';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+} from 'react-share';
 
 interface Blog {
   _id: string;
@@ -34,6 +42,8 @@ function Page({ params }) {
   const [blog, setBlog] = useState<Blog | null>(null);
   const [comment, setComment] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const blogUrl = `http://localhost:3000/blog/${id}`;
 
   // Function to load the blog and its comments
   const loadBlogs = async () => {
@@ -127,6 +137,22 @@ function Page({ params }) {
           )}
         </div>
       )}
+
+      {/* Social Share Buttons */}
+      <div className='mt-10'>
+        <h3 className='text-2xl font-bold'>Share this Blog</h3>
+        <div className='mt-5 flex gap-4'>
+          <FacebookShareButton url={blogUrl} quote={blog.title}>
+            <FacebookIcon size={40} round />
+          </FacebookShareButton>
+          <TwitterShareButton url={blogUrl} title={blog.title}>
+            <TwitterIcon size={40} round />
+          </TwitterShareButton>
+          <LinkedinShareButton url={blogUrl}>
+            <LinkedinIcon size={40} round />
+          </LinkedinShareButton>
+        </div>
+      </div>
 
       {/* comments section */}
       {blog.comments && blog.comments.length > 0 && (
