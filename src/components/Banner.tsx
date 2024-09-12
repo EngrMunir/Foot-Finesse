@@ -7,7 +7,7 @@ function Banner() {
           type='video/mp4'
         />
       </video>
-      <div className='bottom-40 w-full text-center lg:absolute lg:left-1/2 lg:z-20 lg:-translate-x-1/2'>
+      <div className='z-20 w-full text-center lg:absolute lg:bottom-40 lg:left-1/2 lg:-translate-x-1/2'>
         <h1 className='text-3xl font-medium italic leading-none text-white lg:text-[120px]'>
           Bays cant start with out perfect shoes.
         </h1>

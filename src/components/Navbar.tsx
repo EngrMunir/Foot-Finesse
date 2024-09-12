@@ -58,7 +58,7 @@ const Navbar = () => {
   return (
     <div
       id='nav'
-      className={`navbar ${navMoved || pathName !== '/' ? 'fixed top-4 bg-white text-black shadow-2xl' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto max-w-7xl -translate-x-1/2 duration-500 lg:rounded-full`}
+      className={`navbar ${navMoved || pathName !== '/' ? 'fixed top-0 bg-white text-black shadow-2xl lg:top-4' : 'absolute top-0 bg-transparent text-white'} left-1/2 z-50 mx-auto -translate-x-1/2 duration-500 lg:max-w-7xl lg:rounded-full`}
     >
       <div className='navbar-start hidden lg:flex'>
         {/* Mobile Menu --------*/}
@@ -177,7 +177,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Hamburger Menu */}
-      <div className='flex w-full items-end justify-end lg:hidden'>
+      <div className='fixed right-6 top-1 z-[100] lg:hidden'>
         <button
           className='btn btn-circle btn-ghost z-[100] bg-black text-white'
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
