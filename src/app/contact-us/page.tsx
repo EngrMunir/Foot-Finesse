@@ -25,7 +25,7 @@ function contact() {
           </p>
         </div>
 
-        <div className='la:flex-row mt-14 flex flex-col items-center justify-between gap-5 px-3 lg:mt-28'>
+        <div className='mt-14 flex flex-col items-center justify-between gap-5 px-3 lg:mt-28 lg:flex-row'>
           {/*contact info section */}
           <div>
             <p className='text-3xl font-medium text-primary lg:text-4xl'>We&apos;re Here to Help</p>
