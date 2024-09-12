@@ -4,6 +4,8 @@ import './globals.css';
 import { Roboto } from 'next/font/google';
 import AuthProvider from './services/AuthProvider';
 import Navbar from '@/components/Navbar';
+import MouseCursor from '@/components/MouseCursor/MouseCursor';
+import MouseCursorTwo from '@/components/MouseCursor/MouseCursorTwo';
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -39,6 +41,8 @@ export default function RootLayout({
           <div>
             <Navbar />
             {children}
+            <MouseCursor/>
+            <MouseCursorTwo/>
           </div>
         </AuthProvider>
       </body>
