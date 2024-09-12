@@ -3,17 +3,23 @@ import React from 'react';
 
 function Faq() {
   return (
-    <div className='mx-auto max-w-7xl py-20'>
-      <h2 className='mb-6 text-6xl font-medium'>Faq&apos;s</h2>
-      <div className='flex gap-8'>
-        <div>
-          <Image src={'https://i.ibb.co/4wLwGm2/pic5.jpg'} alt='img' width={500} height={300} />
+    <div className='mx-auto max-w-7xl px-3 py-10 lg:py-20'>
+      <h2 className='mb-6 text-3xl font-medium lg:text-6xl'>Faq&apos;s</h2>
+      <div className='flex flex-col gap-4 lg:flex-row lg:gap-8'>
+        <div className='w-full lg:w-[40%]'>
+          <Image
+            className='rounded-lg'
+            src={'https://i.ibb.co/4wLwGm2/pic5.jpg'}
+            alt='img'
+            width={500}
+            height={300}
+          />
         </div>
         {/* accordion */}
-        <div className='w-1/2 space-y-4'>
+        <div className='w-full space-y-2 lg:w-[60%] lg:space-y-4'>
           <div className='collapse collapse-plus border border-primary bg-inherit'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>
+            <div className='collapse-title font-medium lg:text-xl'>
               What types of shows do you offer?
             </div>
             <div className='collapse-content'>
@@ -27,7 +33,7 @@ function Faq() {
 
           <div className='collapse collapse-plus border border-primary'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>What sizes are available?</div>
+            <div className='collapse-title font-medium lg:text-xl'>What sizes are available?</div>
             <div className='collapse-content'>
               <p>
                 Since we sell tickets for shows and events, there are no sizes involved. You can
@@ -38,7 +44,7 @@ function Faq() {
 
           <div className='collapse collapse-plus border border-primary'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>
+            <div className='collapse-title font-medium lg:text-xl'>
               What payment methods do we accept?
             </div>
             <div className='collapse-content'>
@@ -51,7 +57,7 @@ function Faq() {
           </div>
           <div className='collapse collapse-plus border border-primary'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>
+            <div className='collapse-title font-medium lg:text-xl'>
               cancel my order after it has been placed?
             </div>
             <div className='collapse-content'>
@@ -64,7 +70,7 @@ function Faq() {
           </div>
           <div className='collapse collapse-plus border border-primary'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>
+            <div className='collapse-title font-medium lg:text-xl'>
               What are your shipping options?
             </div>
             <div className='collapse-content'>
@@ -77,7 +83,7 @@ function Faq() {
           </div>
           <div className='collapse collapse-plus border border-primary'>
             <input type='checkbox' className='peer' />
-            <div className='collapse-title text-xl font-medium'>
+            <div className='collapse-title font-medium lg:text-xl'>
               How do I return or exchange an item?
             </div>
             <div className='collapse-content'>
