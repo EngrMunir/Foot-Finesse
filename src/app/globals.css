@@ -21,6 +21,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.ant-modal-footer{
+  display: none;
+}
+.ant-modal-content{
+  width: 1000px;
+  margin-left: -40%;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
