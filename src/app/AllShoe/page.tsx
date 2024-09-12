@@ -35,15 +35,12 @@ const AllShoe = () => {
             loadShoes()
     },[session, currentPage, shoePerPage])
 
-    const handleInputChange = (e: { currentTarget: { value: string } }) => {
+    const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{
         const searchText = e.currentTarget.value;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const filtered = shoes.filter((shoe: any) =>
-          shoe.shoeName.toLowerCase().includes(searchText.toLowerCase())
-        );
-        console.log(filtered);
+        const filtered = shoes.filter((shoe) =>shoe?.shoeName?.toLowerCase().includes(searchText.toLowerCase()));
+        console.log(filtered)
         setFilteredShoe(filtered);
-      };
+    }
 
     const handleShoePerPage=(e: React.ChangeEvent<HTMLSelectElement>)=>{
         console.log(e.target.value)
