@@ -4,6 +4,8 @@ import './globals.css';
 import { Roboto } from 'next/font/google';
 import AuthProvider from './services/AuthProvider';
 import Navbar from '@/components/Navbar';
+import MouseCursor from '@/components/MouseCursor/MouseCursor';
+import MouseCursorTwo from '@/components/MouseCursor/MouseCursorTwo';
 import CartProvider from '@/providers/CartProvider';
 import { Toaster } from 'react-hot-toast';
 
@@ -40,8 +42,10 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <div>
-              <Navbar />
-              {children}
+            <Navbar />
+            {children}
+            <MouseCursor/>
+            <MouseCursorTwo/>
             </div>
             <Toaster reverseOrder={true} />
           </CartProvider>
