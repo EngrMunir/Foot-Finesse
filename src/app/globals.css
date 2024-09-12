@@ -26,3 +26,27 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.custom-cursor {
+  position: fixed;
+  width: 10px;  /* Inner black circle size */
+  height: 10px;
+  background-color: black;  /* Inner circle color */
+  border: 3px solid transparent; /* To avoid default border around the element */
+  border-radius: 50%;  /* Make it a circle */
+  pointer-events: none;  /* Prevent interaction with elements */
+  z-index: 99999;  /* Make sure it stays on top */
+  transform: translate(-50%, -50%);  /* Center the cursor on the mouse */
+}
+
+.custom-cursor-two {
+  position: fixed;
+  padding: 15px;
+    /* Inner circle color */
+  border: 1px solid red; /* To avoid default border around the element */
+  border-radius: 50%;  /* Make it a circle */
+  pointer-events: none;  /* Prevent interaction with elements */
+  z-index: 999;  /* Make sure it stays on top */
+  transform: translate(-50%, -50%);  /* Center the cursor on the mouse */
+}
