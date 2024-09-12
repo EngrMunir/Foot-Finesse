@@ -48,15 +48,15 @@ const page = () => {
             <form onSubmit={handleRegister} className='mt-12' action="">
                 <div className='flex gap-1 items-center border-b-2 pb-1 mb-8 pr-12 border-secondary'>   
                         <IoPersonCircleSharp className='text-2xl text-gray-700'/>
-                       <input type="text" name='name' placeholder='Your Name' className='focus:outline-none focus:bg-none focus:border-none'/>
+                       <input type="text" name='name' placeholder='Your Name' required className='focus:outline-none focus:bg-none focus:border-none'/>
                 </div>
                 <div className='flex gap-1 items-center border-b-2 pb-1 mb-8 pr-12 border-secondary'>   
                         <MdEmail className='text-2xl text-gray-700'/>
-                       <input type="email" name='email' placeholder='Email' className='focus:outline-none focus:border-none'/>
+                       <input type="email" name='email' placeholder='Email' required className='focus:outline-none focus:border-none'/>
                 </div>
                 <div className='flex pb-1 gap-1 items-center border-b-2 pr-12 mb-8 border-secondary'>   
                         <IoIosLock className='text-2xl text-gray-700'/>
-                       <input name='password' type="password" placeholder='Password' className='focus:outline-none focus:border-none'/>
+                       <input name='password' type="password" placeholder='Password' required className='focus:outline-none focus:border-none'/>
                 </div>
                <div className='flex justify-end'>
                <input type="submit" className='bg-primary text-white px-6 text-sm  py-1 rounded-full' value="SIGN UP"  />
