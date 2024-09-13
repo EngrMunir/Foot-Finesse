@@ -18,14 +18,14 @@ const CartProvider = ({children}: {children: ReactNode}) => {
 
     //   grand Total
     let result = 0;
+
     cart.forEach((product) => {
+
       let totalPrice = product.discountPrice * product.quantity;
-      console.log(totalPrice);
       result += totalPrice;
     });
     setGrandTotal(result);
 
-    console.log(result);
   }, [cart]);
 
     // add to cart
