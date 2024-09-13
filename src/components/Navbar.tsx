@@ -42,8 +42,8 @@ const Navbar = () => {
       path: '/AllShoe',
     },
     {
-      title: 'Services',
-      path: '/services',
+      title: 'Blogs',
+      path: '/blog',
     },
     {
       title: 'Contacts',
