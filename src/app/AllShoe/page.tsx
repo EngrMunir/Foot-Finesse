@@ -13,7 +13,11 @@ const AllShoe = () => {
     const [currentPage, setCurrentPage]=useState(0);
     const pages =[];
 
+<<<<<<< HEAD
     for(let i =0; i<numberOfPages;i++){
+=======
+    for(let i =0; i< numberOfPages;i++){
+>>>>>>> 86b8b040889591b1321892c02bbfb731abe82908
         pages.push(i)
     }    
     console.log(pages)
@@ -64,7 +68,7 @@ const AllShoe = () => {
             <div className='text-center mb-3'>
                 <input onChange={handleInputChange} className='border-2 w-25 py-2 px-2' type="text" placeholder='Search...'/>
             </div>
-           <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+           <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-7'>
                 {
                      filteredShoe?.map((shoe, index) => (<ShoeCard key={index} shoe={shoe}/>))
                 }

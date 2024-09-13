@@ -8,6 +8,7 @@ const MouseCursorTwo = () => {
   
     useEffect(() => {
       const handleMouseMove = (event: MouseEvent) => {
+        //console.log(event)
         setTargetPosition({
           x: event.clientX,
           y: event.clientY

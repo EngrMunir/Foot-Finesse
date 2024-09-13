@@ -6,6 +6,8 @@ import AuthProvider from './services/AuthProvider';
 import Navbar from '@/components/Navbar';
 import MouseCursor from '@/components/MouseCursor/MouseCursor';
 import MouseCursorTwo from '@/components/MouseCursor/MouseCursorTwo';
+import CartProvider from '@/providers/CartProvider';
+import { Toaster } from 'react-hot-toast';
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -38,12 +40,15 @@ export default function RootLayout({
     <html lang='en' data-theme='light'>
       <body className={roboto.className}>
         <AuthProvider>
-          <div>
-            {/* <Navbar /> */}
+          <CartProvider>
+            <div>
+            <Navbar />
             {children}
             <MouseCursor/>
             <MouseCursorTwo/>
-          </div>
+            </div>
+            <Toaster reverseOrder={true} />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>
