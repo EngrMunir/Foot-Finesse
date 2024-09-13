@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest): Promise<NextResponse> => {
       subject: emailData.subject,
       text: emailData.email,
       html: `
-        Email : ${emailData.email}
+        Email : ${emailData.email} \n
         BODY : ${emailData.message}
       `,
     });
