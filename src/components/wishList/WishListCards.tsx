@@ -18,17 +18,15 @@ const WishListCards = () => {
     const [shoes, setShoes] = useState<Shoe[]>([])
 
     const getShoes = async() => {
-        const res = await axios.get('http://localhost:3000/api/shoeCard')
+        const res = await axios.get('http://localhost:3000/api/wishlist')
         setShoes(res.data);
-
     }
-    
     useEffect(() => {
         getShoes()
     }, [])
 
     return (
-        <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        <div><h3 className='text-3xl font-semibold text-center'>You Have {shoes?.length} Items in Wishlist</h3> <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
             {
                 shoes?.map((shoe) => (
                     <div key={shoe._id} className=" group relative cursor-zoom-in">
@@ -51,7 +49,8 @@ const WishListCards = () => {
                     </div>
                 ))
             }
-        </div>
+        </div></div>
+       
     );
 };
 
