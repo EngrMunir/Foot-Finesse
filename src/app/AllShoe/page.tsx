@@ -12,10 +12,10 @@ const AllShoe = () => {
     const numberOfPages =Math.ceil(count/shoePerPage);
     const [currentPage, setCurrentPage]=useState(0);
     const pages =[];
+
     for(let i =0; i<numberOfPages;i++){
         pages.push(i)
-    }
-        
+    }    
     console.log(pages)
     const loadShoes = async()=>{
         const res =await fetch(`http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`)

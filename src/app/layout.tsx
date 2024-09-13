@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <AuthProvider>
           <div>
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
             <MouseCursor/>
             <MouseCursorTwo/>
