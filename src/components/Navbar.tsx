@@ -54,7 +54,7 @@ const Navbar = () => {
       path: '/contact-us',
     },
   ];
-  if (pathName.includes('login') || pathName.includes('signup')) {
+  if (pathName.includes('login') || pathName.includes('signup') || pathName.includes('admin') ||pathName.includes('allUser')|| pathName.includes('addShoe')) {
     return null;
   }
   console.log(session);

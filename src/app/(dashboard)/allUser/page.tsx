@@ -1,9 +1,9 @@
-import React from 'react';
+import AllUser from "@/components/AllUser";
 
 const AllUserPage = () => {
     return (
         <div>
-            <h1>All User</h1>
+            <AllUser/>
         </div>
     );
 };

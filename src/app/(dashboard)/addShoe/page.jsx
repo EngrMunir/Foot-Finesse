@@ -1,9 +1,11 @@
-import React from 'react';
+
 
 const AddShoePage = () => {
     return (
         <div>
-            Add shoe
+            <form>
+                
+            </form>
         </div>
     );
 };

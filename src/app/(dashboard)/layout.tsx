@@ -17,7 +17,7 @@ export default function DashboardLayout({
     {/* left side */}
     <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4">
       <Link href="/" className="flex items-center justify-center lg:justify-start gap-2">
-        <Image src="/logo.png" alt="logo" width={32} height={32}/>
+        {/* <Image src="" alt="logo" width={32} height={32}/> */}
         <span className="hidden lg:block font-bold">Foot Finesse</span>
       </Link>
         <Link href="/admin" className="">
@@ -26,7 +26,7 @@ export default function DashboardLayout({
         <Link href="addShoe" className="">
             <span className="hidden lg:block">Add Shoe</span>
         </Link>
-        <Link href="" className="allUser">
+        <Link href="allUser" className="allUser">
             <span className="hidden lg:block">All User</span>
         </Link>
     </div>

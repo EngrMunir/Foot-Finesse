@@ -13,11 +13,7 @@ const AllShoe = () => {
     const [currentPage, setCurrentPage]=useState(0);
     const pages =[];
 
-<<<<<<< HEAD
-    for(let i =0; i<numberOfPages;i++){
-=======
     for(let i =0; i< numberOfPages;i++){
->>>>>>> 86b8b040889591b1321892c02bbfb731abe82908
         pages.push(i)
     }    
     console.log(pages)
