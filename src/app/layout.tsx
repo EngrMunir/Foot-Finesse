@@ -42,10 +42,10 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <div>
-            <Navbar />
-            {children}
-            <MouseCursor/>
-            <MouseCursorTwo/>
+              <Navbar />
+              {children}
+              <MouseCursor />
+              <MouseCursorTwo />
             </div>
             <Toaster reverseOrder={true} />
           </CartProvider>

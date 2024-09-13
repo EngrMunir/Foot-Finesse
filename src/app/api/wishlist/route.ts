@@ -34,3 +34,18 @@ export const POST =async(req:NextRequest):Promise<NextResponse>=>{
         throw new Error('something went wrong.')
     }
 }
+
+export const GET =async()=>{
+    try {
+        const db = await connectDb()
+        const wishlistCollection =db?.collection('wishlist')
+        const session = await getServerSession(authOptions)
+        if (!session) {
+            return NextResponse.json({ message: 'User not authenticated' }, { status: 401 });
+        }
+        const result = await wishlistCollection?.find({email: session?.user?.email}).toArray()
+        return NextResponse.json(result)
+    } catch (error) {
+        throw new Error('something went wrong.')
+    }
+}

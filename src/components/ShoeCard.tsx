@@ -2,6 +2,7 @@
 import { CartContext } from '@/providers/CartProvider';
 import { Button, Modal } from 'antd';
 import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useContext, useState } from 'react';
 import { SiSouthwestairlines } from 'react-icons/si';
@@ -9,6 +10,7 @@ import { SiSouthwestairlines } from 'react-icons/si';
 // Define the type for the props
 interface ShoeCardProps {
   shoe: {
+    id:number,
     name: string;
     discountPrice: number;
     image: string;
@@ -22,15 +24,18 @@ interface ShoeCardProps {
 // Update the component to accept props
 const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
   //console.log(shoe)
+  const session = useSession()
   const { id,image, price, discountPrice, shortDescription, category, shoeName } = shoe;
   const [modal2Open, setModal2Open] = useState(false);
   const [size, setSize] = useState(0);
   const {addCart} = useContext(CartContext)
   const sizes = [4, 4.5, 5.5 , 6, 6.5, 7, 7.5 ,8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
 
-  const addToWishList =async(id)=>{
+  const addToWishList =async(id:number)=>{
+   if(session.status ==='authenticated'){
     const res =await axios.post('http://localhost:3000/api/wishlist',id)
     console.log(res)
+   }
   }
   return (
     <div>
@@ -86,7 +91,7 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
                 </div>
               </div>
             </Modal>
-            <button className='w-fit rounded-[4px] border bg-white px-3 py-3 text-sm uppercase leading-4 text-black shadow-2xl duration-500 hover:border-[#DF2626] active:bg-[#DF2626]'>
+            <button onClick={()=>addToWishList(id)} className='w-fit rounded-[4px] border bg-white px-3 py-3 text-sm uppercase leading-4 text-black shadow-2xl duration-500 hover:border-[#DF2626] active:bg-[#DF2626]'>
               <SiSouthwestairlines />
             </button>
           </div>

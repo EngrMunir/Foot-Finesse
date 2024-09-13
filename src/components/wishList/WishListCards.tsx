@@ -1,5 +1,6 @@
 "use client"
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 interface Shoe {
@@ -16,21 +17,19 @@ interface Shoe {
 
 const WishListCards = () => {
     const [shoes, setShoes] = useState<Shoe[]>([])
-
+    const session =useSession()
     const getShoes = async() => {
-        const res = await axios.get('http://localhost:3000/api/shoeCard')
+        const res = await axios.get('http://localhost:3000/api/wishlist')
         setShoes(res.data);
-
     }
-    
     useEffect(() => {
         getShoes()
     }, [])
 
     return (
-        <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        <div><h3 className='text-3xl font-semibold text-center'>You Have {shoes?.length} Items in Wishlist</h3> <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
             {
-                shoes?.map((shoe) => (
+              session.status==='authenticated' &&  shoes?.map((shoe) => ( 
                     <div key={shoe._id} className=" group relative cursor-zoom-in">
                         <div className="z-0 border opacity-0 group-hover:opacity-100 border-black group-hover:scale-110 scale-100 transition-all duration-1000 w-full h-full absolute"></div>
                         <div className="z-10">       
@@ -51,7 +50,8 @@ const WishListCards = () => {
                     </div>
                 ))
             }
-        </div>
+        </div></div>
+       
     );
 };
 
