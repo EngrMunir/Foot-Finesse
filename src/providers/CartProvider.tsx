@@ -61,7 +61,7 @@ const CartProvider = ({children}: {children: ReactNode}) => {
       );
       toast.success(" +1 Quantity Updated", {
         style: {
-          background: "#2B3440",
+          background: "#2B3441",
           color: "#fff",
         },
       });
