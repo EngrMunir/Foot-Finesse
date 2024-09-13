@@ -12,12 +12,21 @@ const CartProvider = ({children}: {children: ReactNode}) => {
         return saveCart ? JSON.parse(saveCart) : []
     })
 
-    // save cart in localStorage
-    useEffect(() => {
-        localStorage.setItem("shoeCart", JSON.stringify(cart)
-    
-    )
-    }, [cart])
+  // save cart in local storage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    //   grand Total
+    let result = 0;
+    cart.forEach((product) => {
+      let totalPrice = product.discountPrice * product.quantity;
+      console.log(totalPrice);
+      result += totalPrice;
+    });
+    setGrandTotal(result);
+
+    console.log(result);
+  }, [cart]);
 
     // add to cart
     const addCart = (product) => {

@@ -1,18 +1,19 @@
 'use client';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
+import { CartContext } from '@/providers/CartProvider';
 const Navbar = () => {
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // Drawer state
-  //console.log(pathName);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); 
+  const {cart} = useContext(CartContext)
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -126,7 +127,12 @@ const Navbar = () => {
         )}
         <button className='btn btn-circle btn-ghost'>
           <Link href={'/carts'}>
-            <BiCart className='text-2xl' />
+            <div className='relative'>
+              <BiCart className='text-2xl' />
+              <p className='absolute bottom-2 right-0 text-xs font-semibold text-red-600 bg-white p-[2px] rounded-full'>
+                {cart.length}
+              </p>
+            </div>
           </Link>
         </button>
         <button className='btn btn-circle btn-ghost mr-2'>
