@@ -1,7 +1,7 @@
 'use client';
 import Cart from '@/components/Cart';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { CartContext } from '@/providers/CartProvider';
+import React, { useContext } from 'react';
 import { HiOutlineInformationCircle } from 'react-icons/hi';
 interface Shoe {
   _id: string;
@@ -16,17 +16,7 @@ interface Shoe {
 }
 
 const CartPage = () => {
-  const grandTotal = 2314;
-  const [shoes, setShoes] = useState<Shoe[]>([]);
-
-  const getShoes = async () => {
-    const res = await axios.get('http://localhost:3000/api/shoeCard');
-    setShoes(res.data);
-  };
-
-  useEffect(() => {
-    getShoes();
-  }, []);
+  const {cart, grandTotal} = useContext(CartContext)
 
   return (
     <div className='mb-24 mt-28 border-t'>
@@ -38,7 +28,7 @@ const CartPage = () => {
 
             {/* single cards */}
             <div className='gap mt-9 flex flex-col rounded-xl bg-[#FAFAFA] p-6'>
-              {shoes?.map((shoe, idx) => <Cart key={shoe._id} idx={idx} length={shoes.length} shoe={shoe}></Cart>)}
+              {cart?.map((shoe, idx) => <Cart key={shoe._id} idx={idx} length={cart.length} shoe={shoe}></Cart>)}
             </div>
           </div>
 

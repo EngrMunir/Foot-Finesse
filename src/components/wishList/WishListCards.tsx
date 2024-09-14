@@ -31,7 +31,7 @@ const WishListCards = () => {
         <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
             {
                 shoes?.map((shoe) => (
-                    <div key={shoe._id} className=" group relative cursor-zoom-in">
+                    <div key={shoe._id} className=" group relative">
                         <div className="z-0 border opacity-0 group-hover:opacity-100 border-black group-hover:scale-110 scale-100 transition-all duration-1000 w-full h-full absolute"></div>
                         <div className="z-10">       
                             <div className="w-full h-64 bg-cover relative">
