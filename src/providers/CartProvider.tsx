@@ -12,12 +12,21 @@ const CartProvider = ({children}: {children: ReactNode}) => {
         return saveCart ? JSON.parse(saveCart) : []
     })
 
-    // save cart in localStorage
-    useEffect(() => {
-        localStorage.setItem("shoeCart", JSON.stringify(cart)
-    
-    )
-    }, [cart])
+  // save cart in local storage
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    //   grand Total
+    let result = 0;
+
+    cart.forEach((product) => {
+
+      let totalPrice = product.discountPrice * product.quantity;
+      result += totalPrice;
+    });
+    setGrandTotal(result);
+
+  }, [cart]);
 
     // add to cart
     const addCart = (product) => {
@@ -52,7 +61,7 @@ const CartProvider = ({children}: {children: ReactNode}) => {
       );
       toast.success(" +1 Quantity Updated", {
         style: {
-          background: "#2B3440",
+          background: "#2B3441",
           color: "#fff",
         },
       });
