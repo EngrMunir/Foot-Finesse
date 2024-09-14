@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import ShoeCard from '@/components/ShoeCard';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
@@ -52,11 +52,12 @@ const AllShoe = () => {
             setCurrentPage(currentPage-1)
         }
     }
-    const handleNextPage=()=>{
-        if(currentPage<pages.length-1){
-            setCurrentPage(currentPage+1)
-        }
+  };
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
     }
+  };
 
     return (
         <div className='mt-20 px-10'>
