@@ -43,10 +43,10 @@ const products: { id: number; name: string; image: string; price: number }[] = [
 
 function LatestCollection() {
   return (
-    <section className='mx-auto grid max-w-7xl grid-cols-2 items-center gap-5 py-20'>
+    <section className='mx-auto grid max-w-7xl grid-cols-1 items-center gap-5 px-3 py-20 lg:grid-cols-2'>
       <div className='flex'>
         <div className='group relative'>
-          <div className='absolute inset-0 h-[544px] w-[520px] rounded-t-[235px] border border-black duration-700 group-hover:mr-8 group-hover:mt-8'></div>
+          <div className='absolute inset-0 h-[400px] w-[400px] rounded-t-[235px] border border-black duration-700 group-hover:mr-8 group-hover:mt-8 lg:h-[544px] lg:w-[520px]'></div>
           <div className='relative z-10 duration-700 group-hover:mb-8 group-hover:ml-8'>
             <Image
               src={collectionImg}
@@ -59,10 +59,20 @@ function LatestCollection() {
         </div>
       </div>
       <div>
-        <h2 className='text-6xl font-semibold'>Discover Our Latest Collection</h2>
+        <h2 className='text-2xl font-semibold lg:text-6xl'>Discover Our Latest Collection</h2>
         <div className='ps-1'>
           <Swiper
-            slidesPerView={2}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+            }}
             speed={1200}
             autoplay={{
               delay: 2000,
@@ -81,6 +91,7 @@ function LatestCollection() {
                     alt={product.name}
                     width={304}
                     height={320}
+                    layout='responsive'
                     className='border-b border-gray-700'
                   />
                   <div className='flex items-center justify-between p-4'>
