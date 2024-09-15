@@ -1,11 +1,30 @@
 "use client"
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+interface Product {
+  id: number;
+  category: string;
+  shoeName: string;
+  price: number;
+  discountPrice: number;
+  shortDescription: string;
+  rating: number;
+  image: string;
+  quantity: number;
+}
+
+interface CartContextType {
+  cart: Product[];
+  grandTotal: number;
+  addCart: (product: Product) => void;
+  updateQuantityOfProduct: (productId: number, state: boolean) => void;
+  deleteCart: (productId: number) => void;
+}
 
 export const CartContext = createContext(null)
 
 const CartProvider = ({children}: {children: ReactNode}) => {
-    const [grandTotal, setGrandTotal] = useState(0)
+    const [grandTotal, setGrandTotal] = useState<number>(0)
 
     const [cart , setCart] = useState(() => {
         const saveCart = localStorage.getItem("shoeCart")
@@ -18,18 +37,18 @@ const CartProvider = ({children}: {children: ReactNode}) => {
 
     //   grand Total
     let result = 0;
-    cart.forEach((product) => {
+
+    cart.forEach((product: Product) => {
+
       let totalPrice = product.discountPrice * product.quantity;
-      console.log(totalPrice);
       result += totalPrice;
     });
     setGrandTotal(result);
 
-    console.log(result);
   }, [cart]);
 
     // add to cart
-    const addCart = (product) => {
+    const addCart = (product: Product) => {
         const existingProduct = cart.find(c => c.id === product.id);
         if(existingProduct){
             const result = cart.map((c) =>
@@ -54,14 +73,14 @@ const CartProvider = ({children}: {children: ReactNode}) => {
     }
 
       //   quantity update
-  const updateQuantityOfProduct = (productId, state) => {
+  const updateQuantityOfProduct = (productId: number, state: boolean) => {
     if (state) {
       const result = cart.map((c) =>
         c.id === productId ? { ...c, quantity: c.quantity + 1 } : c
       );
       toast.success(" +1 Quantity Updated", {
         style: {
-          background: "#2B3440",
+          background: "#2B3441",
           color: "#fff",
         },
       });
@@ -83,12 +102,12 @@ const CartProvider = ({children}: {children: ReactNode}) => {
   };
 
   //   delete from cart
-  const deleteCart = (productId) => {
+  const deleteCart = (productId: number) => {
     const result = cart.filter((p) => productId !== p.id);
     setCart(result);
   };
 
-    const cartInfo  = {
+    const cartInfo: CartContextType  = {
         cart, 
         grandTotal,
         addCart,

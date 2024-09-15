@@ -12,8 +12,8 @@ const Navbar = () => {
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); 
-  const {cart} = useContext(CartContext)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const navStateHandler = () => {
@@ -55,7 +55,13 @@ const Navbar = () => {
       path: '/contact-us',
     },
   ];
-  if (pathName.includes('login') || pathName.includes('signup') || pathName.includes('admin') ||pathName.includes('allUser')|| pathName.includes('addShoe')) {
+  if (
+    pathName.includes('login') ||
+    pathName.includes('signup') ||
+    pathName.includes('admin') ||
+    pathName.includes('allUser') ||
+    pathName.includes('addShoe')
+  ) {
     return null;
   }
   console.log(session);
@@ -133,7 +139,7 @@ const Navbar = () => {
           <Link href={'/carts'}>
             <div className='relative'>
               <BiCart className='text-2xl' />
-              <p className='absolute bottom-2 right-0 text-xs font-semibold text-red-600 bg-white p-[2px] rounded-full'>
+              <p className='absolute bottom-2 right-0 rounded-full bg-white p-[2px] text-xs font-semibold text-red-600'>
                 {cart.length}
               </p>
             </div>
