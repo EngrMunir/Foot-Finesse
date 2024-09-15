@@ -43,11 +43,6 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <div>
-            <Navbar />
-            {children}
-            <MouseCursor/>
-            <MouseCursorTwo/>
-            <Footer></Footer>
               <Navbar />
               {children}
               <MouseCursor />
