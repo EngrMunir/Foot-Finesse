@@ -27,6 +27,7 @@ const AllShoe = () => {
     setFilteredShoe(data);
   };
 
+<<<<<<< HEAD
   const loadCount = async () => {
     const res = await fetch('http://localhost:3000/AllShoe/api/get-total');
     const data = await res.json();
@@ -36,6 +37,18 @@ const AllShoe = () => {
     loadCount();
     loadShoes();
   }, [session, currentPage, shoePerPage]);
+=======
+    const loadCount = async()=>{
+        const res =await fetch('http://localhost:3000/AllShoe/api/get-total')
+        const data = await res.json();
+        setCount(data.count)
+    }
+    useEffect(()=>{
+            loadCount()
+            loadShoes()
+    },[currentPage, shoePerPage])
+
+>>>>>>> f8b75c77fbf6546f53732bff272470f30043be0a
 
   const handleInputChange = (e: React.FormEvent<HTMLFormElement>) => {
     const searchText = e.currentTarget.value;
@@ -55,7 +68,10 @@ const AllShoe = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
+<<<<<<< HEAD
   };
+=======
+>>>>>>> f8b75c77fbf6546f53732bff272470f30043be0a
 
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {

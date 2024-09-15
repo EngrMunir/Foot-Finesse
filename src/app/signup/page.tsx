@@ -2,13 +2,16 @@
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { FormEvent } from 'react';
+import toast from 'react-hot-toast';
 import { IoIosLock } from 'react-icons/io';
 import { IoPersonCircleSharp } from 'react-icons/io5';
 import { MdEmail } from 'react-icons/md';
 import { TbShoe } from 'react-icons/tb';
 
 const page = () => {
+ const router = useRouter()
   const handleRegister = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -31,7 +34,14 @@ const page = () => {
       body: JSON.stringify(userData),
     });
     const result = await res.json();
-    console.log(result);
+    console.log(result)
+    if(result.acknowledged=== true){
+        router.push('/login')
+        toast.success("Congratulations!!! You are now a user of Foot Finesse")
+    }
+    else{
+        toast.error("Something went wrong!!!")
+    }
   };
   const handleSocialLogin = async (handler: string) => {
     const res = await signIn(handler);
