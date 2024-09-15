@@ -14,11 +14,12 @@ import { NextResponse } from 'next/server';
 
 interface CustomToken extends JWT {
   image?: string;
-  phoneNumber?: string |null |undefined;
+  phoneNumber?: string ;
   street?: string;
   zip?: string;
   country?: string;
   city?: string;
+  role?: string;
 }
 
 // interface User {
@@ -108,6 +109,7 @@ export const authOptions: NextAuthOptions = {
       const currentUser = await userCollection?.findOne({email:token.email})
       //console.log(currentUser)
       if (currentUser) {
+        token.role = currentUser?.role
         token.image = currentUser?.image;
         token.phoneNumber = currentUser?.phoneNumber;
         token.street = currentUser?.street;
@@ -129,6 +131,7 @@ export const authOptions: NextAuthOptions = {
       session.user.zip = token.zip;
       session.user.country = token.country;
       session.user.city = token.city;
+      session.user.role = token.role
       //console.log(session)
       return session;
     },
