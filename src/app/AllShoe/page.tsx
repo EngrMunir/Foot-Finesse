@@ -33,7 +33,7 @@ const AllShoe = () => {
     useEffect(()=>{
             loadCount()
             loadShoes()
-    },[session, currentPage, shoePerPage])
+    },[currentPage, shoePerPage])
 
 
     const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{

@@ -21,7 +21,7 @@ interface CartProps {
 
 const Cart = ({ shoe, idx, length }: CartProps) => {
   const { image, id, discountPrice, shoeName, quantity } = shoe;
-  //const {deleteCart, updateQuantityOfProduct} = useContext(CartContext)
+  const {deleteCart, updateQuantityOfProduct}:any = useContext(CartContext)
 
   return (
     <div>
