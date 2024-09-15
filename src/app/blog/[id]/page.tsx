@@ -29,6 +29,7 @@ interface Comment {
   text: string;
   user: string;
   date: string;
+  userImage: string;
 }
 
 function Page({ params }) {
@@ -70,6 +71,9 @@ function Page({ params }) {
         body: JSON.stringify({
           comment: comment,
           user: session?.user?.name || 'Anonymous',
+          userImage:
+            session?.user?.image ||
+            'https://i.ibb.co.com/HTR5dpk/16-168770-user-iconset-no-profile-picture-icon-circle-clipart.jpg',
         }),
       });
 
@@ -91,7 +95,7 @@ function Page({ params }) {
 
   useEffect(() => {
     loadBlogs();
-  }, [session, id]);
+  }, [id]);
 
   console.log(session);
 
@@ -104,16 +108,18 @@ function Page({ params }) {
       <div>
         {/* single blog details*/}
         <div className='w-'>
-          {blog.blogImage && (
-            <Image
-              src={blog.blogImage}
-              alt={blog.title}
-              height={400}
-              width={800}
-              className='h-[400px] rounded-lg border border-secondary object-cover p-3'
-            />
-          )}
-          <p className='my-3 text-xl capitalize text-gray-500'>{blog.tags}</p>
+          {/* Display blog image or default image */}
+          <Image
+            src={blog.blogImage}
+            alt={blog.title}
+            height={400}
+            width={800}
+            className='h-[400px] rounded-lg border border-secondary object-cover p-3'
+          />
+
+          {/* Display category */}
+          <p className='my-3 text-xl capitalize text-gray-500'>{blog.category}</p>
+
           <p className='text-3xl font-bold'>{blog.title}</p>
 
           {/* author */}
@@ -138,7 +144,7 @@ function Page({ params }) {
             </div>
           )}
 
-          {/* descrioption */}
+          {/* description */}
           <p className='mt-5 text-gray-500'>{blog.long_description}</p>
 
           {/* Social Share Buttons */}
@@ -171,11 +177,18 @@ function Page({ params }) {
               <div className='mt-5'>
                 {blog.comments.map((comment, index) => (
                   <div key={index} className='mb-4 border-b pb-3'>
-                    <p className='text-lg font-medium'>{comment.user}</p>
-                    <p className='my-1 text-xl text-gray-500'>{comment.text}</p>
-                    <p className='text-sm text-gray-500'>
-                      {new Date(comment.date).toLocaleString()}
-                    </p>
+                    <div className='flex items-center gap-4'>
+                      <div>
+                        <Image src={comment.userImage} alt={comment.user} height={50} width={50} />
+                      </div>
+                      <div>
+                        <p className='text-lg font-medium'>{comment.user}</p>
+                        <p className='my-1 text-xl text-gray-500'>{comment.text}</p>
+                        <p className='text-sm text-gray-500'>
+                          {new Date(comment.date).toLocaleString()}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -202,8 +215,6 @@ function Page({ params }) {
             </button>
           </div>
         </div>
-        {/* sidebar */}
-        <div></div>
       </div>
     </div>
   );
