@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import ShoeCard from '@/components/ShoeCard';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
@@ -16,7 +16,6 @@ const AllShoe = () => {
     for(let i =0; i< numberOfPages;i++){
         pages.push(i)
     }
-        
     console.log(pages)
     const loadShoes = async()=>{
         const res =await fetch(`http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`)
@@ -34,17 +33,15 @@ const AllShoe = () => {
     useEffect(()=>{
             loadCount()
             loadShoes()
-    },[session, currentPage, shoePerPage])
+    },[currentPage, shoePerPage])
 
-    const handleInputChange = (e: { currentTarget: { value: string } }) => {
+
+    const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{
         const searchText = e.currentTarget.value;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const filtered = shoes.filter((shoe: any) =>
-          shoe.shoeName.toLowerCase().includes(searchText.toLowerCase())
-        );
-        console.log(filtered);
+        const filtered = shoes.filter((shoe) =>shoe?.shoeName?.toLowerCase().includes(searchText.toLowerCase()));
+        console.log(filtered)
         setFilteredShoe(filtered);
-      };
+    }
 
     const handleShoePerPage=(e: React.ChangeEvent<HTMLSelectElement>)=>{
         console.log(e.target.value)
@@ -56,11 +53,12 @@ const AllShoe = () => {
             setCurrentPage(currentPage-1)
         }
     }
-    const handleNextPage=()=>{
-        if(currentPage<pages.length-1){
-            setCurrentPage(currentPage+1)
-        }
+
+  const handleNextPage = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
     }
+  };
 
     return (
         <div className='mt-20 px-10'>

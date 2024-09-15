@@ -48,6 +48,11 @@ export default function RootLayout({
             <MouseCursor/>
             <MouseCursorTwo/>
             <Footer></Footer>
+              <Navbar />
+              {children}
+              <MouseCursor />
+              <MouseCursorTwo />
+              <Footer/>
             </div>
             <Toaster reverseOrder={true} />
           </CartProvider>

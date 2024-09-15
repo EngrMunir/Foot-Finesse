@@ -21,16 +21,19 @@ interface Blog {
 function page() {
   const { data: session } = useSession();
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  // const [category, setCategory] = useState('');
 
   const loadBlogs = async () => {
-    const res = await fetch('http://localhost:3000/blog/api/get-blog');
+    const res = await fetch(`http://localhost:3000/blog/api/get-blog?name=${searchQuery}`);
     const data = await res.json();
     console.log(data);
     setBlogs(data);
   };
   useEffect(() => {
     loadBlogs();
-  }, [session]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session, searchQuery]);
 
   return (
     <>
@@ -50,13 +53,14 @@ function page() {
         {/* blog card and sidebar holder */}
         <div className='mt-10 flex gap-10'>
           {/* siderbar */}
-
           <div className='w-[30%]'>
             {/* search box */}
             <div>
               <p className='mb-5 text-2xl font-medium'>Search</p>
               <div className='relative'>
                 <input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   type='text'
                   className='w-full rounded-lg border border-secondary bg-inherit px-4 py-3 pr-12 focus:border-secondary focus:outline-none'
                   placeholder='Search...'
@@ -82,30 +86,38 @@ function page() {
             </div>
             {/*  category */}
             <div className='mt-5'>
-              <p className='text-2xl font-medium'>Categories</p>
+              <p className='text-2xl font-medium'>Popular Category</p>
               <div className='divider mb-5 mt-3 h-[2px] bg-secondary'></div>
-              <div className='grid gap-4'>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Nike
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Woodland
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  adidas
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Red chip
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Puma
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Reebok
-                </button>
-                <button className='rounded-lg border border-secondary px-4 py-1 text-xl duration-300 hover:bg-primary hover:text-white'>
-                  Skechers
-                </button>
+              <div className='grid'>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Nike</p>
+                  <p className=''>1500</p>
+                </div>
+                <div className='divider mt-0 h-[1px]'></div>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Woodland</p>
+                  <p className=''>250</p>
+                </div>
+                <div className='divider mt-0 h-[1px]'></div>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Adidas</p>
+                  <p className=''>1900</p>
+                </div>
+                <div className='divider mt-0 h-[1px]'></div>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Red chip</p>
+                  <p className=''>450</p>
+                </div>
+                <div className='divider mt-0 h-[1px]'></div>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Puma</p>
+                  <p className=''>600</p>
+                </div>
+                <div className='divider mt-0 h-[1px]'></div>
+                <div className='flex items-center justify-between py-3'>
+                  <p className='hover:text-[#d72424]'>Reebok</p>
+                  <p className=''>150</p>
+                </div>
               </div>
               <div className='divider my-5 h-[2px] bg-secondary'></div>
 
@@ -149,7 +161,7 @@ function page() {
             </div>
           </div>
 
-          {/* blog cards golder */}
+          {/* blog cards holder */}
           <div className='w-[70%]'>
             <div className='grid grid-cols-2 gap-2'>
               {/* single blog card */}
