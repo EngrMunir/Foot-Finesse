@@ -35,6 +35,7 @@ const AllShoe = () => {
             loadShoes()
     },[session, currentPage, shoePerPage])
 
+
     const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{
         const searchText = e.currentTarget.value;
         const filtered = shoes.filter((shoe) =>shoe?.shoeName?.toLowerCase().includes(searchText.toLowerCase()));
@@ -52,7 +53,7 @@ const AllShoe = () => {
             setCurrentPage(currentPage-1)
         }
     }
-  };
+
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
