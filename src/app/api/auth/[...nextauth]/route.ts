@@ -104,12 +104,12 @@ export const authOptions: NextAuthOptions = {
       return true;
     },
     
-    async jwt({ token, account, user }: { token: CustomToken; account?: any; user?: User }) {
+    async jwt({ token, account, user }: { token: CustomToken; account?: Account|any; user?: User }) {
       // console.log('account',account)
       // console.log('user',user)
       const db: Db | undefined =await connectDb()
-      const userCollection = db.collection('users')
-      const currentUser = await userCollection.findOne({email:token.email})
+      const userCollection = db?.collection('users')
+      const currentUser = await userCollection?.findOne({email:token.email})
       //console.log(currentUser)
         if(currentUser){
           token.image = currentUser?.image
@@ -121,7 +121,7 @@ export const authOptions: NextAuthOptions = {
         }    
       return token
     },
-  async session({ session, token }: { session: Session; token: CustomToken }) {
+  async session({ session, token }: { session: Session; token: CustomToken }): Promise<Session> {
       //console.log('token',token)
       //console.log(session.user.photoURL)
       session.user.image = token?.image
