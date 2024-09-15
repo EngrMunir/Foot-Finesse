@@ -6,15 +6,19 @@ import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
-import { CartContext, CartContextType } from '@/providers/CartProvider';
+import { CartContext } from '@/providers/CartProvider';
+interface CustomUser {
+  role: string;
+}
+
 const Navbar = () => {
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { cart } = useContext(CartContext) as CartContextType;
-
+  const { cart }: any = useContext(CartContext);
+  const user = session?.data?.user as CustomUser;
   useEffect(() => {
     const navStateHandler = () => {
       if (window.scrollY > 100) {
@@ -39,16 +43,12 @@ const Navbar = () => {
       path: '/about',
     },
     {
-      title: 'All Shoe',
+      title: 'Shop',
       path: '/AllShoe',
     },
     {
-      title: 'Dashboard',
-      path: '/admin',
-    },
-    {
-      title: 'Services',
-      path: '/services',
+      title: 'Blogs',
+      path: '/blog',
     },
     {
       title: 'Contacts',
@@ -130,7 +130,9 @@ const Navbar = () => {
       <div className='navbar-end hidden lg:flex'>
         {session?.status === 'authenticated' ? (
           <p>
-            <Link href='profile'>{session?.data?.user?.name}</Link>
+            <Link href={user?.role === 'admin' ? '/admin' : 'profile'}>
+              {session?.data?.user?.name}
+            </Link>
           </p>
         ) : (
           <></>

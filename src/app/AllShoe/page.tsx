@@ -15,7 +15,7 @@ const AllShoe = () => {
 
     for(let i =0; i< numberOfPages;i++){
         pages.push(i)
-    }    
+    }
     console.log(pages)
     const loadShoes = async()=>{
         const res =await fetch(`http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`)
@@ -33,7 +33,8 @@ const AllShoe = () => {
     useEffect(()=>{
             loadCount()
             loadShoes()
-    },[session, currentPage, shoePerPage])
+    },[currentPage, shoePerPage])
+
 
     const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{
         const searchText = e.currentTarget.value;
@@ -52,7 +53,7 @@ const AllShoe = () => {
             setCurrentPage(currentPage-1)
         }
     }
-  };
+
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);

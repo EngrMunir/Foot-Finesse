@@ -13,8 +13,8 @@ interface Product {
   quantity: number;
 }
 
-export interface CartContextType {
-  cart: Product[];
+interface CartContextType {
+  cart: Product[] | any;
   grandTotal: number;
   addCart: (product: Product) => void;
   updateQuantityOfProduct: (productId: number, state: boolean) => void;
