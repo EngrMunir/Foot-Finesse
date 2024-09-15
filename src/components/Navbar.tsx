@@ -36,7 +36,7 @@ const Navbar = () => {
     },
     {
       title: 'About',
-      path: '/about',
+      path: '/aboutus',
     },
     {
       title: 'All Shoe',
