@@ -2,7 +2,7 @@ import { connectDb } from '@/app/lib/connectDb';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 
-export const GET = async (req: NextRequest) => {
+export const GET = async (req: NextRequest):Promise<NextResponse> => {
   try {
     const db = await connectDb();
     const blogsCollection = await db?.collection('blogs');
@@ -13,7 +13,7 @@ export const GET = async (req: NextRequest) => {
     const name = searchParams.get('name');
 
     // Build the query object for MongoDB
-    const query: any = {};
+    const query: Record<string, any>  = {};
 
     // Add filters based on category and name, if they exist
     // if (category) {
