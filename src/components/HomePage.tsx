@@ -15,7 +15,7 @@ const HomePage = () => {
       if(!isOpen){
         setIsOpen(true)
       }
-    }, 10000)
+    }, 1000)
     return () => {
       clearInterval(intervalId)
     }

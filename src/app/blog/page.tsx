@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -19,7 +18,6 @@ interface Blog {
 }
 
 function page() {
-  const { data: session } = useSession();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   // const [category, setCategory] = useState('');
@@ -33,7 +31,7 @@ function page() {
   useEffect(() => {
     loadBlogs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session, searchQuery]);
+  }, [searchQuery]);
 
   return (
     <>
@@ -165,33 +163,38 @@ function page() {
           <div className='w-[70%]'>
             <div className='grid grid-cols-2 gap-2'>
               {/* single blog card */}
-              {blogs.map((blog) => (
-                <div key={blog.id} className='rounded-lg border border-secondary p-5'>
-                  <Image
-                    src={blog.blogImage}
-                    alt='shoe'
-                    width={400}
-                    height={300}
-                    layout='responsive'
-                  />
-                  <p className='mt-3 text-xl text-secondary'>{blog.category}</p>
-                  <p className='text-3xl font-semibold'>{blog.title}</p>
-                  <div className='my-3 flex items-center gap-3'>
+
+              {Array.isArray(blogs) && blogs.length > 0 ? (
+                blogs.map((blog) => (
+                  <div key={blog.id} className='rounded-lg border border-secondary p-5'>
                     <Image
-                      src={blog.author.img}
-                      alt='avatar'
-                      width={40}
-                      height={40}
-                      className='rounded-full'
+                      src={blog.blogImage}
+                      alt='shoe'
+                      width={400}
+                      height={300}
+                      layout='responsive'
                     />
-                    <p>By {blog.author.name}</p>
+                    <p className='mt-3 text-xl text-secondary'>{blog.category}</p>
+                    <p className='text-3xl font-semibold'>{blog.title}</p>
+                    <div className='my-3 flex items-center gap-3'>
+                      <Image
+                        src={blog.author.img}
+                        alt='avatar'
+                        width={40}
+                        height={40}
+                        className='rounded-full'
+                      />
+                      <p>By {blog.author.name}</p>
+                    </div>
+                    <p>{blog.description}</p>
+                    <button className='mt-5 rounded-md border border-secondary bg-primary px-5 py-2 text-white transition-colors duration-300 hover:border-white hover:text-white'>
+                      <Link href={`/blog/${blog._id}`}>See More</Link>
+                    </button>
                   </div>
-                  <p>{blog.description}</p>
-                  <button className='mt-5 rounded-md border border-secondary bg-primary px-5 py-2 text-white transition-colors duration-300 hover:border-white hover:text-white'>
-                    <Link href={`/blog/${blog._id}`}>See More</Link>
-                  </button>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p>No blogs found</p>
+              )}
             </div>
           </div>
         </div>
