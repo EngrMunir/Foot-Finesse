@@ -6,14 +6,14 @@ import { usePathname } from 'next/navigation';
 import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
-import { CartContext } from '@/providers/CartProvider';
+import { CartContext, CartContextType } from '@/providers/CartProvider';
 const Navbar = () => {
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(CartContext) as CartContextType;
 
   useEffect(() => {
     const navStateHandler = () => {
