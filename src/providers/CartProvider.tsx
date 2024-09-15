@@ -19,15 +19,44 @@ interface CartContextType {
   addCart: (product: Product) => void;
   updateQuantityOfProduct: (productId: number, state: boolean) => void;
   deleteCart: (productId: number) => void;
+  compareShoes: (shoeId: string) => void; 
+  getComparedShoes: () => string[];
 }
 
 export const CartContext = createContext<CartContextType | null>(null);
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
+
+  const compareShoes = (shoeId: string): void => {
+    let comparedShoes: string[] = JSON.parse(localStorage.getItem('comparedShoes') || '[]');
+  
+
+    if (comparedShoes.includes(shoeId)) {
+      console.error('Shoe is already in the comparison list');
+      return;
+    }
+  
+    if (comparedShoes.length >= 2) {
+      console.error('You can only compare two shoes at a time');
+      return;
+    }
+
+    comparedShoes.push(shoeId);
+    localStorage.setItem('comparedShoes', JSON.stringify(comparedShoes));
+  
+    console.log('Shoe added for comparison');
+  };
+
+  const getComparedShoes = () => {
+    const comparedShoes:string[] = JSON.parse(localStorage.getItem('comparedShoes')|| '[]')  ;
+    return comparedShoes;
+  };
+
+
   const [grandTotal, setGrandTotal] = useState<number>(0);
 
   const [cart, setCart] = useState(() => {
-    const saveCart = localStorage.getItem('shoeCart');
+    const saveCart = localStorage.getItem('shoeCart'|| '[]');
     return saveCart ? JSON.parse(saveCart) : [];
   });
 
@@ -47,9 +76,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // add to cart
   const addCart = (product: Product) => {
-    const existingProduct = cart.find((c) => c.id === product.id);
+    const existingProduct = cart.find((c:any) => c.id === product.id);
     if (existingProduct) {
-      const result = cart.map((c) =>
+      const result = cart.map((c:any) =>
         c.id === product.id ? { ...c, quantity: c.quantity + 1 } : c
       );
       toast.success('Quantity updated', {
@@ -82,7 +111,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       });
       return setCart(result);
     } else {
-      const result = cart.map((c) => (c.id === productId ? { ...c, quantity: c.quantity - 1 } : c));
+      const result = cart.map((c:any) => (c.id === productId ? { ...c, quantity: c.quantity - 1 } : c));
 
       toast.success(' -1 Quantity Updated', {
         style: {
@@ -96,7 +125,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   //   delete from cart
   const deleteCart = (productId: number) => {
-    const result = cart.filter((p) => productId !== p.id);
+    const result = cart.filter((p:any) => productId !== p.id);
     setCart(result);
   };
 
@@ -106,6 +135,8 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     addCart,
     updateQuantityOfProduct,
     deleteCart,
+    compareShoes,
+    getComparedShoes
   };
 
   return <CartContext.Provider value={cartInfo}>{children}</CartContext.Provider>;

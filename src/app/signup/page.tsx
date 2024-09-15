@@ -37,7 +37,7 @@ const page = () => {
     console.log(result)
     if(result.acknowledged=== true){
         router.push('/login')
-        toast.success("Congratulations!!! You are now a user of Foot Finesse")
+        toast.success("You are now a user of Foot Finesse")
     }
     else{
         toast.error("Something went wrong!!!")
@@ -45,7 +45,13 @@ const page = () => {
   };
   const handleSocialLogin = async (handler: string) => {
     const res = await signIn(handler);
-    console.log(res);
+    if(res?.ok){
+        router.push('/')
+        toast.success('you have successfully logged in!')
+    }
+    else{
+        toast.error('Something Went Wrong!!!')
+    }
   };
   return (
     <div className='flex h-screen flex-col md:flex-row'>
