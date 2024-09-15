@@ -21,7 +21,7 @@ export const GET = async (request: Request, { params }: Params) => {
       return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
     }
 
-    return NextResponse.json(blog); // Blog will include comments if they exist
+    return NextResponse.json(blog);
   } catch (error) {
     console.error('Error fetching the blog:', error);
     return NextResponse.json({ error: 'Error fetching the blog' }, { status: 500 });
@@ -34,7 +34,7 @@ export const POST = async (request: Request, { params }: Params) => {
   const blogsCollection = db?.collection('blogs');
 
   try {
-    const { comment, user } = await request.json(); // Expect comment and user info from the request body
+    const { comment, user, userImage } = await request.json();
 
     // Convert params.id to ObjectId
     const blog = await blogsCollection?.findOne({ _id: new ObjectId(params.id) });
@@ -51,6 +51,9 @@ export const POST = async (request: Request, { params }: Params) => {
           comments: {
             text: comment,
             user: user || 'Anonymous',
+            userImage:
+              userImage ||
+              'https://i.ibb.co.com/HTR5dpk/16-168770-user-iconset-no-profile-picture-icon-circle-clipart.jpg',
             date: new Date(),
           },
         },
