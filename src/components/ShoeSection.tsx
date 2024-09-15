@@ -10,7 +10,7 @@ const ShoeSection = () => {
   const getShoes = async () => {
     const res = await fetch('http://localhost:3000/api/shoeCard');
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     setShoes(data);
   };
   console.log(shoes);

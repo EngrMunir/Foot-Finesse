@@ -10,13 +10,14 @@ import { CartContext } from '@/providers/CartProvider';
 interface CustomUser {
   role: string
 }
+
 const Navbar = () => {
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { cart } = useContext(CartContext);
+  const { cart }:any = useContext(CartContext);
   const user = session?.data?.user as CustomUser;
   useEffect(() => {
     const navStateHandler = () => {
