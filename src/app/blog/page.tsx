@@ -32,6 +32,7 @@ function page() {
   };
   useEffect(() => {
     loadBlogs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, searchQuery]);
 
   return (
