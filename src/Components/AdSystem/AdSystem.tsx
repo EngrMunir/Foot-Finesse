@@ -64,7 +64,7 @@ const AdSystem = () => {
                             <label className="cursor-pointer label justify-center gap-6">
 
                                 <input type="checkbox" defaultChecked className="checkbox checkbox-error" />
-                                <span className="label-text">Do Not Show This Pop Pp Again</span>
+                                <span className="label-text">Do Not Show This Pop Up Again</span>
                             </label>
                         </div>
 
