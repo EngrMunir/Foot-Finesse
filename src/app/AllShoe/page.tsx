@@ -16,68 +16,51 @@ const AllShoe = () => {
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
   }
-  console.log(pages);
+
   const loadShoes = async () => {
     const res = await fetch(
       `http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`
     );
     const data = await res.json();
-    console.log(data);
     setShoes(data);
     setFilteredShoe(data);
   };
 
-<<<<<<<<< Temporary merge branch 1
-    const loadCount = async()=>{
-        const res =await fetch('http://localhost:3000/AllShoe/api/get-total')
-        const data = await res.json();
-        setCount(data.count)
-    }
-    useEffect(()=>{
-            loadCount()
-            loadShoes()
-    },[currentPage, shoePerPage])
-
-=========
   const loadCount = async () => {
     const res = await fetch('http://localhost:3000/AllShoe/api/get-total');
     const data = await res.json();
     setCount(data.count);
   };
+
   useEffect(() => {
     loadCount();
     loadShoes();
-  }, [session, currentPage, shoePerPage]);
->>>>>>>>> Temporary merge branch 2
+  }, [currentPage, shoePerPage, session]);
 
-  const handleInputChange = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchText = e.currentTarget.value;
     const filtered = shoes.filter((shoe) =>
       shoe?.shoeName?.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log(filtered);
     setFilteredShoe(filtered);
   };
 
   const handleShoePerPage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
     setShoePerPage(parseInt(e.target.value));
-    setCurrentPage(0);
+    setCurrentPage(0); // Reset to first page when items per page change
   };
+
   const handlePrevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
-<<<<<<<<< Temporary merge branch 1
-=========
   };
->>>>>>>>> Temporary merge branch 2
 
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
- 
+  };
 
   return (
     <div className='mt-20 px-10'>
@@ -96,7 +79,7 @@ const AllShoe = () => {
         {filteredShoe?.map((shoe, index) => <ShoeCard key={index} shoe={shoe} />)}
       </div>
       <div className='mb-40 text-center'>
-        <p>Current PAge:{currentPage}</p>
+        <p>Current Page: {currentPage}</p>
         <button onClick={handlePrevPage}>Prev</button>
         {pages.map((page) => (
           <button
@@ -108,7 +91,7 @@ const AllShoe = () => {
           </button>
         ))}
         <button onClick={handleNextPage}>Next</button>
-        <select value={shoePerPage} onChange={handleShoePerPage} name='' id=''>
+        <select value={shoePerPage} onChange={handleShoePerPage}>
           <option value='5'>5</option>
           <option value='10'>10</option>
           <option value='20'>20</option>
