@@ -1,14 +1,33 @@
+"use client"
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
+import { TbShoe } from 'react-icons/tb';
 
 const Footer = () => {
+    const pathName = usePathname();
+    if (
+        pathName.includes('login') ||
+        pathName.includes('signup') ||
+        pathName.includes('admin') ||
+        pathName.includes('allUser') ||
+        pathName.includes('addShoe')
+      ) {
+        return null;
+      }
     return (
         <footer className="footer bg-base-400 text-base-content p-10">
     <aside>
-        <Image src="/assets/logo.jpg" alt='' width={50} height={50} />
+    <Link href={'/'} className='flex items-center'>
+          <TbShoe className='me-3 text-3xl' />
+          <p className='font-medium'>
+            <span className='font-light lg:text-slate-400'>FOOT</span>
+            FINESSE
+          </p>
+        </Link>
         <p>
-        <span className='font-bold'>Foot Finesse.</span>
-        <br />
+        
         <span className='text-xl font-semibold'>Fashion for Your Feet</span>
         </p>
     </aside>
