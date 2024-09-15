@@ -17,7 +17,7 @@ const Footer = () => {
         return null;
       }
     return (
-        <footer className="footer bg-base-400 text-base-content p-10">
+        <footer className="footer bg-primary text-white  p-10">
     <aside>
     <Link href={'/'} className='flex items-center'>
           <TbShoe className='me-3 text-3xl' />

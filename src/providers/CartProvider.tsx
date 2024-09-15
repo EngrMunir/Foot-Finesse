@@ -14,12 +14,12 @@ interface Product {
 }
 
 interface CartContextType {
-  cart: Product[];
+  cart: Product[] | any;
   grandTotal: number;
   addCart: (product: Product) => void;
   updateQuantityOfProduct: (productId: number, state: boolean) => void;
   deleteCart: (productId: number) => void;
-}
+} 
 
 export const CartContext = createContext(null)
 

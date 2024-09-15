@@ -52,7 +52,7 @@ const AllShoe = () => {
             setCurrentPage(currentPage-1)
         }
     }
-  };
+
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
