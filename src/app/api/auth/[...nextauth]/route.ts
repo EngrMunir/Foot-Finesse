@@ -10,10 +10,11 @@ import { Account, User } from 'next-auth';
 import { Db } from 'mongodb';
 import { Session } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
+import { NextResponse } from 'next/server';
 
 interface CustomToken extends JWT {
   image?: string;
-  phoneNumber?: string;
+  phoneNumber?: string |null |undefined;
   street?: string;
   zip?: string;
   country?: string;
@@ -116,9 +117,12 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-  async session({ session, token }: { session: Session; token: CustomToken }): Promise<Session> {
+  async session({ session, token }: { session: Session | any; token: CustomToken }): Promise<Session> {
       //console.log('token',token)
       //console.log(session.user.photoURL)
+      if(!session.user){
+        return session
+      }
       session.user.image = token?.image;
       session.user.phoneNumber = token.phoneNumber;
       session.user.street = token.street;
