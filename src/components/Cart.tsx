@@ -1,5 +1,6 @@
+import { CartContext } from '@/providers/CartProvider';
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import { GoPlus } from 'react-icons/go';
 import { PiMinusLight } from 'react-icons/pi';
 
@@ -20,9 +21,7 @@ interface CartProps {
 
 const Cart = ({ shoe, idx, length }: CartProps) => {
   const { image, id, discountPrice, shoeName, quantity } = shoe;
-
-  const deleteCart = (id: number) => {};
-  const updateQuantityOfProduct = (id: number, value: boolean) => {};
+  const {deleteCart, updateQuantityOfProduct} = useContext(CartContext)
 
   return (
     <div>
@@ -33,7 +32,7 @@ const Cart = ({ shoe, idx, length }: CartProps) => {
               <button onClick={() => updateQuantityOfProduct(id, false)}>
                 <PiMinusLight className='ml-auto cursor-pointer text-3xl text-[#939393]' />
               </button>
-              <h5 className='text-xl font-semibold text-black'>{'4'}</h5>
+              <h5 className='text-xl font-semibold text-black'>{quantity}</h5>
               <button onClick={() => updateQuantityOfProduct(id, true)}>
                 <GoPlus className='ml-auto cursor-pointer text-3xl text-[#939393]' />
               </button>
