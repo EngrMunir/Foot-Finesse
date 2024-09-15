@@ -27,6 +27,7 @@ const AllShoe = () => {
     setFilteredShoe(data);
   };
 
+
   const loadCount = async () => {
     const res = await fetch('http://localhost:3000/AllShoe/api/get-total');
     const data = await res.json();
@@ -36,6 +37,18 @@ const AllShoe = () => {
     loadCount();
     loadShoes();
   }, [session, currentPage, shoePerPage]);
+
+    const loadCount = async()=>{
+        const res =await fetch('http://localhost:3000/AllShoe/api/get-total')
+        const data = await res.json();
+        setCount(data.count)
+    }
+    useEffect(()=>{
+            loadCount()
+            loadShoes()
+    },[currentPage, shoePerPage])
+
+
 
   const handleInputChange = (e: React.FormEvent<HTMLFormElement>) => {
     const searchText = e.currentTarget.value;
@@ -55,13 +68,13 @@ const AllShoe = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
-  };
+
 
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
-  };
+ 
 
   return (
     <div className='mt-20 px-10'>
