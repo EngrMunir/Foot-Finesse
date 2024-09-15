@@ -1,10 +1,8 @@
 'use client';
 import ShoeCard from '@/components/ShoeCard';
-import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 
 const AllShoe = () => {
-    const {data: session } = useSession();
     const [shoes, setShoes] = useState([]);
     const [filteredShoe, setFilteredShoe] = useState([]);
     const [count, setCount]=useState(0);
@@ -33,7 +31,7 @@ const AllShoe = () => {
     useEffect(()=>{
             loadCount()
             loadShoes()
-    },[session, currentPage, shoePerPage])
+    },[currentPage, shoePerPage])
 
 
     const handleInputChange=(e:React.FormEvent<HTMLFormElement>)=>{
