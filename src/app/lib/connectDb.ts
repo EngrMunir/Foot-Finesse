@@ -1,11 +1,17 @@
-import { MongoClient,Db, ServerApiVersion } from "mongodb";
+import { MongoClient, Db, ServerApiVersion } from "mongodb";
+
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
 
 export const connectDb = async (): Promise<Db | undefined> => {
   try {
+    if (cachedClient && cachedDb) {
+      return cachedDb;
+    }
+
     const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_DB_USER}:${process.env.NEXT_PUBLIC_DB_PASSWORD}@cluster0.6qdai.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-    // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-    const options = {
-      poolSize: 10, // Limit the number of connections
+    
+    const options = { 
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverApi: {
@@ -14,10 +20,20 @@ export const connectDb = async (): Promise<Db | undefined> => {
         deprecationErrors: true,
       },
     };
-    const client = new MongoClient(uri,options );
-    const db = client.db("foot-finesse");
-    return db;
+
+    // Create a new MongoClient instance if no cached client exists
+    const client = new MongoClient(uri, options);
+    
+    // Connect to MongoDB
+    await client.connect();
+
+    // Cache the connected client and database
+    cachedClient = client;
+    cachedDb = client.db("foot-finesse");
+
+    return cachedDb;
   } catch (error) {
-    console.log(error);
+    console.error("Failed to connect to MongoDB:", error);
+    return undefined;
   }
 };
