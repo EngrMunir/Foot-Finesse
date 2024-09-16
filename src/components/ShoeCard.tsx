@@ -1,11 +1,8 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useContext, useState } from 'react';
-
 import { Button, Modal } from 'antd';
-
 import toast from 'react-hot-toast';
-
 import { SiSouthwestairlines } from 'react-icons/si';
 import axios from 'axios';
 import { CartContext } from '@/providers/CartProvider';
@@ -28,17 +25,6 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
   const { id, image, price, discountPrice, shortDescription, category, shoeName } = shoe;
   const [modal2Open, setModal2Open] = useState(false);
   const [size, setSize] = useState(0);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { addCart, compareShoes }: any = useContext(CartContext);
-  const sizes = [4, 4.5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5];
-
-  const addToWishList = async (id: number) => {
-    if (session.status === 'authenticated') {
-      const res = await axios.post('http://localhost:3000/api/wishlist', id);
-      console.log(res);
-    }
-  };
 
   const [loading, setLoading] = useState(false);
   const addToRecentlyViewed = async (id: number) => {
@@ -69,19 +55,19 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { addCart, compareShoes }: any = useContext(CartContext);
+  const sizes = [4, 4.5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5];
 
-  const {addCart,compareShoes}:any = useContext(CartContext)
-  const sizes = [4, 4.5, 5.5 , 6, 6.5, 7, 7.5 ,8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
- 
-  const addToWishList =async(id:number)=>{
-    console.log(id)
-   if(session.status ==='authenticated'){
-    const res =await axios.post('http://localhost:3000/api/wishlist',id)
-    if(res.status ===200){
-      toast.success("Shoe added to wishlist!")
+  const addToWishList = async (id: number) => {
+    console.log(id);
+    if (session.status === 'authenticated') {
+      const res = await axios.post('http://localhost:3000/api/wishlist', id);
+      if (res.status === 200) {
+        toast.success('Shoe added to wishlist!');
+      }
     }
-   }
-  }
+  };
 
   return (
     <div>
