@@ -3,6 +3,7 @@ import ShoeCard from '@/components/ShoeCard';
 
 import React, { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
 const AllShoe = () => {
   const [shoes, setShoes] = useState([]);
   const [filteredShoe, setFilteredShoe] = useState([]);
@@ -11,6 +12,18 @@ const AllShoe = () => {
   const numberOfPages = Math.ceil(count / shoePerPage);
   const [currentPage, setCurrentPage] = useState(0);
   const pages = [];
+=======
+
+const AllShoe = () => {   
+    const [shoes, setShoes] = useState([]);
+    const [filteredShoe, setFilteredShoe] = useState([]);
+    const [count, setCount]=useState(0);
+    const [shoePerPage, setShoePerPage] = useState(10);
+    const numberOfPages =Math.ceil(count/shoePerPage);
+    const [currentPage, setCurrentPage]=useState(0);
+    const pages =[];
+
+>>>>>>> c08b6daee8902171cc358fa2337e4174308a171a
 
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
