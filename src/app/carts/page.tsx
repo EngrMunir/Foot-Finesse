@@ -16,7 +16,7 @@ interface Shoe {
 }
 
 const CartPage = () => {
-  const {cart, grandTotal} = useContext(CartContext)
+  const {cart, grandTotal}:any = useContext(CartContext)
 
   return (
     <div className='mb-24 mt-28 border-t'>

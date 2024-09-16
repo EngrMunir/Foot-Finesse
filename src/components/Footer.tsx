@@ -1,17 +1,25 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-// import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 import { TbShoe } from 'react-icons/tb';
 
 const Footer = () => {
-  // const pathName = usePathname();
+   const pathName = usePathname();
 
   // if (pathName.includes('login') || pathName.includes('signup')) {
   //     return null;
   // }
-
+  if (
+    pathName.includes('login') ||
+    pathName.includes('signup') ||
+    pathName.includes('admin') ||
+    pathName.includes('allUser') ||
+    pathName.includes('addShoe')
+  ) {
+    return null;
+  }
   return (
     <div className=''>
       <footer className='footer bg-primary p-10 text-white'>
