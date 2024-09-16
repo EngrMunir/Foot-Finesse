@@ -1,6 +1,5 @@
 'use client';
 import ShoeCard from '@/components/ShoeCard';
-
 import React, { useEffect, useState } from 'react';
 
 const AllShoe = () => {
@@ -15,7 +14,7 @@ const AllShoe = () => {
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
   }
-  //console.log(pages);
+
   const loadShoes = async () => {
     const res = await fetch(
       `http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`
@@ -32,12 +31,11 @@ const AllShoe = () => {
     const data = await res.json();
     setCount(data.count);
   };
+
   useEffect(() => {
     loadCount();
     loadShoes();
   }, [ currentPage, shoePerPage]);
-
-
 
   const handleInputChange = (e: React.FormEvent<HTMLFormElement>) => {
     const searchText = e.currentTarget.value;
@@ -53,6 +51,7 @@ const AllShoe = () => {
     setShoePerPage(parseInt(e.target.value));
     setCurrentPage(0);
   };
+
   const handlePrevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
