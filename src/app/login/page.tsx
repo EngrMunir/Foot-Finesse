@@ -4,9 +4,13 @@ import React from 'react';
 import { IoIosLock } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { TbShoe } from 'react-icons/tb';
+import { redirect, useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 const page = () => {
+    const router = useRouter()
+    const session = useSession()
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -17,11 +21,28 @@ const page = () => {
       password,
       redirect: false,
     });
-    console.log(res);
+    //console.log(res);
+    if(res?.status===200){
+        router.push('/')
+        toast.success('you have successfully logged in!')
+    }
+    else{
+        toast.error('Something Went Wrong!!!')
+    }
   };
   const handleSocialLogin = async (handler: string) => {
-    const res = await signIn(handler);
-    console.log(res);
+    try {
+      const res = await signIn(handler,{
+        redirect:true
+      });
+    if(res?.ok){
+        router.push('/')
+        toast.success('you have successfully logged in!')
+    }
+    } catch (error) {
+      console.log(error)
+    }
+    
   };
   return (
     <div className='flex h-screen flex-col md:flex-row'>

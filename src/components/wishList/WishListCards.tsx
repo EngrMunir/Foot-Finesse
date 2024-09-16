@@ -1,8 +1,9 @@
 "use client"
+import { CartContext } from "@/providers/CartProvider";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 interface Shoe {
     _id: string; 
     id: number;
@@ -17,6 +18,7 @@ interface Shoe {
 
 const WishListCards = () => {
     const [shoes, setShoes] = useState<Shoe[]>([])
+    const {addCart}:any = useContext(CartContext)
     const session =useSession()
     const getShoes = async() => {
         const res = await axios.get('http://localhost:3000/api/wishlist')
@@ -43,7 +45,7 @@ const WishListCards = () => {
                                 <p className="text-base font-bold line-through italic">${shoe.price}</p>
                             </div>
                             <div className="font-medium flex items-center mt-5 scale-y-0 group-hover:scale-y-100 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100">
-                                <button className="border-black shadow-2xl z-10 border rounded-[4px] mr-2 leading-4 hover:border-[#DF2626] duration-500 px-6 py-2 hover:bg-[#DF2626] text-black hover:text-white">ADD TO  <span className="block">CARD</span></button>
+                                <button onClick={() =>addCart(shoe)} className="border-black shadow-2xl z-10 border rounded-[4px] mr-2 leading-4 hover:border-[#DF2626] duration-500 px-6 py-2 hover:bg-[#DF2626] text-black hover:text-white">ADD TO  <span className="block">CART</span></button>
                                 <button className="bg-black z-10 shadow-2xl  text-white hover:bg-[#DF2626] hover:text-white duration-500 px-6 py-2 rounded-[4px] hover:shadow-lg">REMOVE</button>
                             </div>
                         </div>

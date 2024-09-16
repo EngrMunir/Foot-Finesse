@@ -34,6 +34,9 @@ interface CustomToken extends JWT {
 
 export const authOptions: NextAuthOptions = {
   secret: 'AGhh0OLwzJ0RkIQ0GhomkbBRy+gJ9oPp29xgrBkfxfs=',
+  pages: {
+    signIn: '/login', 
+  },
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60,
