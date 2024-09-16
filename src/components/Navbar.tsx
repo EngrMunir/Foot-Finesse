@@ -64,7 +64,7 @@ const Navbar = () => {
   ) {
     return null;
   }
-  console.log(session);
+  //console.log(session);
 
   return (
     <div
