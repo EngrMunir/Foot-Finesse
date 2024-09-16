@@ -13,6 +13,7 @@
     "@headlessui/react": "^2.1.8",
     "@nextui-org/card": "^2.0.33",
     "@nextui-org/react": "^2.4.6",
+    "@smastrom/react-rating": "^1.5.0",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.4.0",
     "antd": "^5.20.6",
