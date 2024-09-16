@@ -13,6 +13,7 @@ interface CustomUser {
 }
 
 import axios from 'axios';
+
 interface Shoe {
     _id: string; 
     id: number;
@@ -32,8 +33,8 @@ const Navbar = () => {
       setShoes(res.data);
   }
   useEffect(() => {
-      getShoes()
-  }, [])
+    getShoes()
+  }, [shoes]);
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
