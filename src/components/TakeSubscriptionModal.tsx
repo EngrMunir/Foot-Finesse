@@ -8,7 +8,7 @@ import comImagee from "../../public/AboutUs/Image/adv-2.png"
 const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-10' onClose={() => setIsOpen(false)}>
+      <Dialog as='div' className='relative z-50' onClose={() => setIsOpen(false)}>
         <TransitionChild
           as={Fragment}
           enter='ease-out duration-300'
@@ -22,7 +22,7 @@ const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
         </TransitionChild>
 
         <div className='fixed inset-0 overflow-y-auto'>
-          <div className='flex min-h-full items-center justify-center p-4 text-center'>
+          <div className='flex min-h-full z-50 items-center justify-center p-4 text-center'>
             <TransitionChild
               as={Fragment}
               enter='ease-out duration-300'
@@ -35,8 +35,8 @@ const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
               <DialogPanel className='relative z-50 h-2/6 w-full max-w-4xl transform overflow-hidden rounded-2xl border bg-gradient-to-t from-[#040404]/10 to-[#040404]/0 p-6 text-left align-middle text-white shadow-xl backdrop-blur-xl transition-all'>
                 <div>
                   <div>
-                    <div className=''>
-                      <div className='grid grid-cols-2 items-center justify-center p-8 text-center'>
+                    <div className='z-50'>
+                      <div className='grid z-50 grid-cols-2 items-center justify-center p-8 text-center'>
                         <div className=''>
                           {/* Button */}
                           <button onClick={() => setIsOpen(false)} className='btn btn-circle btn-outline'>
@@ -76,7 +76,7 @@ const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
                               <div className='relative'>
                                 <input
                                   type='email'
-                                  className='w-full rounded-lg border border-black p-4 pe-12 text-sm shadow-sm'
+                                  className='w-full rounded-lg text-black border border-black p-4 pe-12 text-sm shadow-sm'
                                   placeholder='Inpute your Email'
                                 />
 
