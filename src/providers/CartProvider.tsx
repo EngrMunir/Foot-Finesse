@@ -33,6 +33,13 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     return saveCompare ? JSON.parse(saveCompare) : [];
   });
 
+  const [grandTotal, setGrandTotal] = useState<number>(0);
+
+  const [cart, setCart] = useState(() => {
+    const saveCart = localStorage.getItem('cart');
+    return saveCart ? JSON.parse(saveCart) : [];
+  });
+
   useEffect(()=>{
     localStorage.setItem('comparedShoes', JSON.stringify(compare));
   },[compare])
@@ -75,12 +82,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
 
 
-  const [grandTotal, setGrandTotal] = useState<number>(0);
 
-  const [cart, setCart] = useState(() => {
-    const saveCart = localStorage.getItem('shoeCart');
-    return saveCart ? JSON.parse(saveCart) : [];
-  });
 
   // save cart in local storage
   useEffect(() => {
@@ -133,14 +135,28 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       });
       return setCart(result);
     } else {
-      const result = cart.map((c:any) => (c.id === productId ? { ...c, quantity: c.quantity - 1 } : c));
+      const result = cart.map((c:any) => (c.id === productId && c.quantity > 0 ? { ...c, quantity: c.quantity - 1 } : c));
 
-      toast.success(' -1 Quantity Updated', {
-        style: {
-          background: '#2B3440',
-          color: '#fff',
-        },
+      cart.forEach(e => {
+        if(e.id === productId && e.quantity === 0) {
+         
+          toast.error('You cant Reduce', {
+            style: {
+              background: '#2B3440',
+              color: '#fff',
+            },
+          });
+        } else{
+          toast.success(' -1 Quantity Updated', {
+            style: {
+              background: '#2B3440',
+              color: '#fff',
+            },
+          });
+        }
       });
+
+
       return setCart(result);
     }
   };
