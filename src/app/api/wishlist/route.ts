@@ -10,7 +10,7 @@ export const POST =async(req:NextRequest):Promise<NextResponse>=>{
         const wishlistCollection =db?.collection('wishlist')
         const session = await getServerSession(authOptions)
         if (!session) {
-            return NextResponse.json({ message: 'User not authenticated' }, { status: 401 });
+            return NextResponse.json({ message: 'User not authenticated' });
         }
         const id =await req.json()
         console.log(id)   
@@ -41,7 +41,7 @@ export const GET =async()=>{
         const wishlistCollection =db?.collection('wishlist')
         const session = await getServerSession(authOptions)
         if (!session) {
-            return NextResponse.json({ message: 'User not authenticated' }, { status: 401 });
+            return NextResponse.json({ message: 'User not authenticated' });
         }
         const result = await wishlistCollection?.find({email: session?.user?.email}).toArray()
         return NextResponse.json(result)
@@ -49,3 +49,4 @@ export const GET =async()=>{
         throw new Error('something went wrong.')
     }
 }
+
