@@ -31,12 +31,11 @@ const HomePage = () => {
       <LatestCollection />
       <LatestPost />
       <Faq />
+      <RecentlyViewed />
       <NewsLetter />
       <div className='absolute z-50'>
         <TakeSubscriptionModal setIsOpen={setIsOpen} isOpen={isOpen}></TakeSubscriptionModal>
       </div>
-
-      <RecentlyViewed />
     </div>
   );
 };
