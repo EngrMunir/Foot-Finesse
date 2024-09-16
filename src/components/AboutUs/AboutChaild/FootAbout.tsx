@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 
@@ -26,20 +27,20 @@ const FootAbout = () => {
                         <div className="mt-8  flex-wrap gap-4  justify-center items-center text-center grid">
                             {/* Button  */}
                             <div className="">
-                                <a
-                                    className="group relative inline-block  overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring "
-                                    href="#"
+                                <Link
+                                    className="group relative inline-block  overflow-hidden border border-primary px-8 py-3 focus:outline-none focus:ring "
+                                    href={'/AllShoe'}
                                 >
                                     <span
-                                        className="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"
+                                        className="absolute inset-y-0 left-0 w-[2px] bg-primary transition-all group-hover:w-full group-active:bg-indigo-500"
                                     ></span>
 
                                     <span
-                                        className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white"
+                                        className="relative text-sm font-medium text-primary transition-colors group-hover:text-white"
                                     >
                                         Shop Now
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

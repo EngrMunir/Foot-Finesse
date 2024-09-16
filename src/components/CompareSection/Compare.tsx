@@ -1,11 +1,17 @@
+"use client"
 import Image from "next/image";
 
 import comImage from "../../../public/AboutUs/Image/pic1.jpg"
 import comImage2 from "../../../public/AboutUs/Image/pic2.jpg"
+import { useContext } from "react";
+import { CartContext } from "@/providers/CartProvider";
 
 
 
 const Compare = () => {
+    const {getComparedShoes}:any=useContext(CartContext)
+    const shoes =getComparedShoes()
+    console.log(shoes)
     return (
         <div>
             <div className="mt-28 justify-center grid">
@@ -182,15 +188,15 @@ const Compare = () => {
                                     {/* Button  */}
                                     <div className="justify-center items-center text-center grid">
                                         <a
-                                            className="group relative inline-block  overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring "
+                                            className="group relative inline-block  overflow-hidden border border-primary px-8 py-3 focus:outline-none focus:ring "
                                             href="#"
                                         >
                                             <span
-                                                className="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"
+                                                className="absolute inset-y-0 left-0 w-[2px] bg-primary transition-all group-hover:w-full group-active:bg-indigo-500"
                                             ></span>
 
                                             <span
-                                                className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white"
+                                                className="relative text-sm font-medium text-primary transition-colors group-hover:text-white"
                                             >
                                                 Add to Card
                                             </span>
@@ -201,15 +207,15 @@ const Compare = () => {
                                     {/* Button  */}
                                     <div className="justify-center items-center text-center grid">
                                         <a
-                                            className="group relative inline-block  overflow-hidden border border-indigo-600 px-8 py-3 focus:outline-none focus:ring "
+                                            className="group relative inline-block  overflow-hidden border border-primary px-8 py-3 focus:outline-none focus:ring "
                                             href="#"
                                         >
                                             <span
-                                                className="absolute inset-y-0 left-0 w-[2px] bg-indigo-600 transition-all group-hover:w-full group-active:bg-indigo-500"
+                                                className="absolute inset-y-0 left-0 w-[2px] bg-primary transition-all group-hover:w-full group-active:bg-indigo-500"
                                             ></span>
 
                                             <span
-                                                className="relative text-sm font-medium text-indigo-600 transition-colors group-hover:text-white"
+                                                className="relative text-sm font-medium text-primary transition-colors group-hover:text-white"
                                             >
                                                 Add to Card
                                             </span>
