@@ -1,8 +1,10 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Modal } from 'antd';
 import { SiSouthwestairlines } from 'react-icons/si';
+import axios from 'axios';
+import { CartContext } from '@/providers/CartProvider';
 
 interface ShoeCardProps {
   shoe: {
@@ -22,6 +24,7 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
   const { id, image, price, discountPrice, shortDescription, category, shoeName } = shoe;
   const [modal2Open, setModal2Open] = useState(false);
   const [size, setSize] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { addCart, compareShoes }: any = useContext(CartContext);
   const sizes = [4, 4.5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5];
 
@@ -31,10 +34,8 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
       console.log(res);
     }
   };
-  const [size, setSize] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
-  const sizes = [4, 4.5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5];
 
+  const [loading, setLoading] = useState(false);
   const addToRecentlyViewed = async (id: number) => {
     if (session.status === 'authenticated') {
       const email = session.data?.user?.email;

@@ -22,7 +22,9 @@ export const POST = async (request: Request) => {
       const recentlyViewedProducts = userDocument.recentlyViewed || [];
 
       // Remove old entry if it exists
-      const filteredProducts = recentlyViewedProducts.filter((id) => id !== productId);
+      const filteredProducts = recentlyViewedProducts.filter(
+        (id: string | number) => id !== productId
+      );
 
       // Add the new product ID
       filteredProducts.unshift(productId);
