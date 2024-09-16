@@ -3,6 +3,16 @@ import ShoeCard from '@/components/ShoeCard';
 
 import React, { useEffect, useState } from 'react';
 
+<<<<<<< HEAD
+const AllShoe = () => {
+  const [shoes, setShoes] = useState([]);
+  const [filteredShoe, setFilteredShoe] = useState([]);
+  const [count, setCount] = useState(0);
+  const [shoePerPage, setShoePerPage] = useState(10);
+  const numberOfPages = Math.ceil(count / shoePerPage);
+  const [currentPage, setCurrentPage] = useState(0);
+  const pages = [];
+=======
 
 const AllShoe = () => {   
     const [shoes, setShoes] = useState([]);
@@ -13,17 +23,18 @@ const AllShoe = () => {
     const [currentPage, setCurrentPage]=useState(0);
     const pages =[];
 
+>>>>>>> c08b6daee8902171cc358fa2337e4174308a171a
 
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
   }
-  console.log(pages);
+  //console.log(pages);
   const loadShoes = async () => {
     const res = await fetch(
       `http://localhost:3000/AllShoe/api/get-all?page=${currentPage}&size=${shoePerPage}`
     );
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     setShoes(data);
     setFilteredShoe(data);
   };
@@ -37,17 +48,7 @@ const AllShoe = () => {
   useEffect(() => {
     loadCount();
     loadShoes();
-  }, [session, currentPage, shoePerPage]);
-
-    const loadCount = async()=>{
-        const res =await fetch('http://localhost:3000/AllShoe/api/get-total')
-        const data = await res.json();
-        setCount(data.count)
-    }
-    useEffect(()=>{
-            loadCount()
-            loadShoes()
-    },[currentPage, shoePerPage])
+  }, [ currentPage, shoePerPage]);
 
 
 
@@ -69,13 +70,13 @@ const AllShoe = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
-
+  }
 
   const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
- 
+}
 
   return (
     <div className='mt-20 px-10'>
