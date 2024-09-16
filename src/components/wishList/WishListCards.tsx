@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 interface Shoe {
     _id: string; 
     id: number;
@@ -27,7 +28,20 @@ const WishListCards = () => {
     useEffect(() => {
         getShoes()
     }, [])
-
+    const handleDelete=async(id:any)=>{
+        //console.log(id)
+        const newId ={id}
+        console.log(newId)
+        const res = await axios.delete('http://localhost:3000/api/wishlistDelete',{data:newId})
+         console.log(res.data)
+        if(res.data.deletedCount>0){
+            getShoes()
+            toast.success('You have successfully deleted a shoe!!')
+        }
+        else{
+            toast.error("Something went wrong!!")
+        }
+    }
     return (
         <div><h3 className='text-3xl font-semibold text-center'>You Have {shoes?.length} Items in Wishlist</h3> <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-9">
             {
@@ -46,7 +60,7 @@ const WishListCards = () => {
                             </div>
                             <div className="font-medium flex items-center mt-5 scale-y-0 group-hover:scale-y-100 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100">
                                 <button onClick={() =>addCart(shoe)} className="border-black shadow-2xl z-10 border rounded-[4px] mr-2 leading-4 hover:border-[#DF2626] duration-500 px-6 py-2 hover:bg-[#DF2626] text-black hover:text-white">ADD TO  <span className="block">CART</span></button>
-                                <button className="bg-black z-10 shadow-2xl  text-white hover:bg-[#DF2626] hover:text-white duration-500 px-6 py-2 rounded-[4px] hover:shadow-lg">REMOVE</button>
+                                <button onClick={()=>handleDelete(shoe.id)} className="bg-black z-10 shadow-2xl  text-white hover:bg-[#DF2626] hover:text-white duration-500 px-6 py-2 rounded-[4px] hover:shadow-lg">REMOVE</button>
                             </div>
                         </div>
                     </div>

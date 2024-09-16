@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { SiSouthwestairlines } from 'react-icons/si';
 
 // Define the type for the props
@@ -32,9 +33,12 @@ const ShoeCard: React.FC<ShoeCardProps> = ({ shoe }) => {
   const sizes = [4, 4.5, 5.5 , 6, 6.5, 7, 7.5 ,8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5]
  
   const addToWishList =async(id:number)=>{
+    console.log(id)
    if(session.status ==='authenticated'){
     const res =await axios.post('http://localhost:3000/api/wishlist',id)
-    console.log(res)
+    if(res.status ===200){
+      toast.success("Shoe added to wishlist!")
+    }
    }
   }
   return (
