@@ -1,17 +1,18 @@
 'use client';
 import ShoeCard from '@/components/ShoeCard';
-import { useSession } from 'next-auth/react';
+
 import React, { useEffect, useState } from 'react';
 
-const AllShoe = () => {
-  const { data: session } = useSession();
-  const [shoes, setShoes] = useState([]);
-  const [filteredShoe, setFilteredShoe] = useState([]);
-  const [count, setCount] = useState(0);
-  const [shoePerPage, setShoePerPage] = useState(10);
-  const numberOfPages = Math.ceil(count / shoePerPage);
-  const [currentPage, setCurrentPage] = useState(0);
-  const pages = [];
+
+const AllShoe = () => {   
+    const [shoes, setShoes] = useState([]);
+    const [filteredShoe, setFilteredShoe] = useState([]);
+    const [count, setCount]=useState(0);
+    const [shoePerPage, setShoePerPage] = useState(10);
+    const numberOfPages =Math.ceil(count/shoePerPage);
+    const [currentPage, setCurrentPage]=useState(0);
+    const pages =[];
+
 
   for (let i = 0; i < numberOfPages; i++) {
     pages.push(i);
