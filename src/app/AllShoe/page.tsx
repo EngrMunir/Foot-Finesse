@@ -1,10 +1,9 @@
 'use client';
 import ShoeCard from '@/components/ShoeCard';
-import { useSession } from 'next-auth/react';
+
 import React, { useEffect, useState } from 'react';
 
-const AllShoe = () => {
-    const {data: session } = useSession();
+const AllShoe = () => {   
     const [shoes, setShoes] = useState([]);
     const [filteredShoe, setFilteredShoe] = useState([]);
     const [count, setCount]=useState(0);
