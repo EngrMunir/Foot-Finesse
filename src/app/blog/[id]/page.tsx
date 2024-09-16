@@ -108,7 +108,7 @@ function Page({ params }) {
       <div>
         {/* single blog details*/}
         <div className='w-'>
-          {/* Display blog image or default image */}
+          {/* Display blog image */}
           <Image
             src={blog.blogImage}
             alt={blog.title}
@@ -177,9 +177,9 @@ function Page({ params }) {
               <div className='mt-5'>
                 {blog.comments.map((comment, index) => (
                   <div key={index} className='mb-4 border-b pb-3'>
-                    <div className='flex items-center gap-4'>
+                    <div className='flex items-center gap-6'>
                       <div>
-                        <Image src={comment.userImage} alt={comment.user} height={50} width={50} />
+                        <Image src={comment.userImage} alt={comment.user} height={80} width={80} />
                       </div>
                       <div>
                         <p className='text-lg font-medium'>{comment.user}</p>
