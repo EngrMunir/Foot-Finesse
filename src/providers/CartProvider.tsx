@@ -56,7 +56,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const [grandTotal, setGrandTotal] = useState<number>(0);
 
   const [cart, setCart] = useState(() => {
-    const saveCart = localStorage.getItem('shoeCart'|| '[]');
+    const saveCart = localStorage.getItem('shoeCart');
     return saveCart ? JSON.parse(saveCart) : [];
   });
 
