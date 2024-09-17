@@ -1,6 +1,6 @@
 import { connectDb } from "@/app/lib/connectDb"
 import { NextRequest, NextResponse } from "next/server"
-import { authOptions } from "../auth/[...nextauth]/route"
+import { authOptions } from "../auth/[...nextauth].ts/route"
 import { getServerSession } from "next-auth"
 
 export const DELETE =async(req:NextRequest):Promise<NextResponse>=>{
