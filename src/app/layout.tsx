@@ -8,6 +8,7 @@ import MouseCursor from '@/components/MouseCursor/MouseCursor';
 import MouseCursorTwo from '@/components/MouseCursor/MouseCursorTwo';
 import CartProvider from '@/providers/CartProvider';
 import { Toaster } from 'react-hot-toast';
+import Footer from '@/components/Footer';
 
 const roboto = Roboto({
   subsets: ['latin'], // Ensure the correct character subsets are used
@@ -42,10 +43,11 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <div>
-            <Navbar />
-            {children}
-            <MouseCursor/>
-            <MouseCursorTwo/>
+              <Navbar />
+              {children}
+              <MouseCursor />
+              <MouseCursorTwo />
+              <Footer/>
             </div>
             <Toaster reverseOrder={true} />
           </CartProvider>

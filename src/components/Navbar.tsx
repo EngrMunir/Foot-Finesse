@@ -7,14 +7,18 @@ import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
 import { CartContext } from '@/providers/CartProvider';
+interface CustomUser {
+  role: string;
+}
+
 const Navbar = () => {
   const session = useSession();
   console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false); 
-  const {cart} = useContext(CartContext)
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { cart }: any = useContext(CartContext);
+  const user = session?.data?.user as CustomUser;
   useEffect(() => {
     const navStateHandler = () => {
       if (window.scrollY > 100) {
@@ -36,25 +40,31 @@ const Navbar = () => {
     },
     {
       title: 'About',
-      path: '/about',
+      path: '/aboutus',
     },
     {
-      title: 'All Shoe',
+      title: 'Shop',
       path: '/AllShoe',
     },
     {
-      title: 'Services',
-      path: '/services',
+      title: 'Blogs',
+      path: '/blog',
     },
     {
       title: 'Contacts',
       path: '/contact-us',
     },
   ];
-  if (pathName.includes('login') || pathName.includes('signup')) {
+  if (
+    pathName.includes('login') ||
+    pathName.includes('signup') ||
+    pathName.includes('admin') ||
+    pathName.includes('allUser') ||
+    pathName.includes('addShoe')
+  ) {
     return null;
   }
-  console.log(session);
+  //console.log(session);
 
   return (
     <div
@@ -120,7 +130,9 @@ const Navbar = () => {
       <div className='navbar-end hidden lg:flex'>
         {session?.status === 'authenticated' ? (
           <p>
-            <Link href='profile'>{session?.data?.user?.name}</Link>
+            <Link href={user?.role === 'admin' ? '/admin' : 'profile'}>
+              {session?.data?.user?.name}
+            </Link>
           </p>
         ) : (
           <></>
@@ -129,7 +141,7 @@ const Navbar = () => {
           <Link href={'/carts'}>
             <div className='relative'>
               <BiCart className='text-2xl' />
-              <p className='absolute bottom-2 right-0 text-xs font-semibold text-red-600 bg-white p-[2px] rounded-full'>
+              <p className='absolute bottom-2 right-0 rounded-full bg-white p-[2px] text-xs font-semibold text-red-600'>
                 {cart.length}
               </p>
             </div>
