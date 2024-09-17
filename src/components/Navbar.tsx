@@ -257,7 +257,7 @@ const Navbar = () => {
           <Link href={'/wishlist'}>
             {' '}
             <FaHeartCirclePlus className='text-xl' />
-            <p className='absolute bottom-[10px] right-[10px] rounded-full bg-white px-[2px] text-xs font-semibold text-red-600'>
+            <p className='absolute -bottom-[2px] right-[0px] rounded-full bg-white px-[2px] text-xs font-semibold text-red-600'>
               {shoes.length}
             </p>
           </Link>

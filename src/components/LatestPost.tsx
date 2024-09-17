@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 const LatestPost = () => {
@@ -13,7 +14,7 @@ const LatestPost = () => {
         </div>
         <div className=''>
           <button className='group btn relative mt-3 rounded-none border-black bg-white text-black hover:bg-transparent lg:mt-6'>
-            <p className='z-10 text-xl duration-500 group-hover:text-white'>View all</p>
+           <Link href={'/blog'}> <p className='z-10 text-xl duration-500 group-hover:text-white'>View all</p></Link>
             <span className='absolute inset-0 w-0 bg-black duration-500 group-hover:w-full'></span>
           </button>
         </div>

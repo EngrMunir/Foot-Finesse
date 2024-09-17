@@ -1,5 +1,7 @@
 // import showNowBg from '../../public/assets/shopnow-bg.jpg';
 
+import Link from "next/link";
+
 function ShopNow() {
   return (
     <section
@@ -14,7 +16,7 @@ function ShopNow() {
         </div>
         <div>
           <button className='group btn relative mt-6 rounded-none border-black bg-black text-white hover:bg-transparent'>
-            <p className='z-10 text-xl duration-500 group-hover:text-black'>Shop Now</p>
+           <Link href={"/AllShoe"}> <p className='z-10 text-xl duration-500 group-hover:text-black'>Shop Now</p></Link>
             <span className='absolute inset-0 w-0 bg-white duration-500 group-hover:w-full'></span>
           </button>
         </div>
