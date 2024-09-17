@@ -14,6 +14,7 @@ interface Product {
 
 const RecentlyViewed: React.FC = () => {
   const { data: session } = useSession();
+  console.log(session)
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -29,13 +30,13 @@ const RecentlyViewed: React.FC = () => {
     if (session?.user?.email) {
       fetchRecentlyViewedProducts();
     }
-  }, [session]);
+  }, [session,products]);
 
   return (
     <div className='container mx-auto max-w-7xl'>
       <h2 className='mb-10 text-3xl font-medium lg:text-6xl'>Recently Viewed Products</h2>
       <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-        {products.map((product) => (
+        {  products.map((product) => (
           <div key={product._id} className='rounded-md border p-4'>
             <div className='relative h-48 w-full'>
               <Image
