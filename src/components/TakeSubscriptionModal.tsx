@@ -36,7 +36,7 @@ const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
                 <div>
                   <div>
                     <div className='z-50'>
-                      <div className='grid z-50 grid-cols-2 items-center justify-center p-8 text-center'>
+                      <div className='grid z-50 grid-cols-1 lg:grid-cols-2 items-center justify-center p-8 text-center'>
                         <div className=''>
                           {/* Button */}
                           <button onClick={() => setIsOpen(false)} className='btn btn-circle btn-outline'>
@@ -115,7 +115,7 @@ const TakeSubscriptionModal = ({ setIsOpen, isOpen }) => {
                         </div>
 
                         {/* Image Section */}
-                        <div className='block rounded-lg p-4 shadow-sm shadow-indigo-100 '>
+                        <div className='hidden lg:block  rounded-lg p-4 shadow-sm shadow-indigo-100 '>
                           <div className='w-full h-96 bg-cover relative rounded-lg'>
                             <Image
                               layout="fill"  objectFit="cover" className="w-full rounded-lg"
