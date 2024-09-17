@@ -114,7 +114,7 @@ function contact() {
 
           {/* form section */}
 
-          <div className='w-1/2 rounded-lg border-[1px] border-secondary p-10'>
+          <div className='md:w-1/2 rounded-lg border-[1px] border-secondary p-10'>
             <p className='mb-8 text-center text-4xl font-medium text-primary'>Get In Touch</p>
             <form onSubmit={handleEmail}className='space-y-3'>
 

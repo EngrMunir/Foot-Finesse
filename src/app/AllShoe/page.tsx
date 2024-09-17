@@ -33,7 +33,7 @@ const AllShoe = () => {
   useEffect(() => {
     loadCount();
     loadShoes();
-  }, [currentPage, shoePerPage, session]);
+  }, [currentPage, shoePerPage]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchText = e.currentTarget.value;
