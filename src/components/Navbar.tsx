@@ -34,9 +34,9 @@ const Navbar = () => {
   }
   useEffect(() => {
     getShoes()
-  }, [shoes]);
+  }, []);
   const session = useSession();
-  console.log(session);
+  //console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
