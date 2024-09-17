@@ -36,7 +36,7 @@ const Navbar = () => {
     getShoes();
   }, []);
   const session = useSession();
-  console.log(session);
+  //console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

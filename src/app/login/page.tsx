@@ -33,7 +33,7 @@ const page = () => {
   const handleSocialLogin = async (handler: string) => {
     try {
       const res = await signIn(handler,{
-        redirect:true
+        callbackUrl: '/', 
       });
     if(res?.ok){
         router.push('/')
