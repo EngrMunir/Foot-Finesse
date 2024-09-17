@@ -1,7 +1,8 @@
 import { connectDb } from "@/app/lib/connectDb";
+import { authOptions } from "@/app/utils/AuthOptions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
+
 
 export const POST =async(req:NextRequest):Promise<NextResponse>=>{
     try {
