@@ -77,7 +77,7 @@ const Navbar = () => {
     {
       title: 'Contacts',
       path: '/contact-us',
-    },
+    }
   ];
   if (
     pathName.includes('login') ||
@@ -232,7 +232,38 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Hamburger Menu */}
-      <div className='fixed right-6 top-1 z-[100] lg:hidden'>
+      <div className='ml-4 flex gap-3 md:hidden items-center'>
+      <button className=' btn-ghost'>
+          <Link href={'/compare'}>
+            <div className='relative'>
+              <FaScaleUnbalanced className='text-xl' />
+              <p className='absolute -bottom-1 -right-2 rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
+                {comparedShoeLength.length}
+              </p>
+            </div>
+          </Link>
+        </button>
+        <button className=' btn-ghost'>
+          <Link href={'/carts'}>
+            <div className='relative'>
+              <BiCart className='text-xl' />
+              <p className='absolute -bottom-1 -right-2 rounded-full bg-white p-[2px] text-xs font-semibold text-red-600'>
+                {cart.length}
+              </p>
+            </div>
+          </Link>
+        </button>
+        <button className=' btn-ghost relative'>
+          <Link href={'/wishlist'}>
+            {' '}
+            <FaHeartCirclePlus className='text-xl' />
+            <p className='absolute -bottom-[2px] right-[0px] rounded-full bg-white px-[2px] text-xs font-semibold text-red-600'>
+              {shoes.length}
+            </p>
+          </Link>
+        </button>
+      </div>
+      <div className='sticky navbar-end z-[100] lg:hidden'> 
         <button
           className='btn btn-circle btn-ghost z-[100] bg-black text-white'
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -308,6 +339,12 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <li className='border-b border-gray-300'>{session?.status ==='authenticated' ?<button
+              className='gap-2 px-4 py-2 hover:bg-orange-200 flex items-center'
+              onClick={() => signOut()}
+            >
+              Logout <BiLogIn />
+            </button>:<Link  onClick={() => setIsDrawerOpen(false)} className='block px-4 py-2 hover:bg-orange-200' href={'/login'}>Login</Link>}</li>
         </ul>
       </div>
 

@@ -64,49 +64,11 @@ const NewsLetter = () => {
             <div className='mx-auto max-w-screen-xl px-4 pb-8 pt-16 sm:px-6 lg:px-8 lg:pt-24'>
               <div className='text-center'>
                 <h2 className='text-3xl font-extrabold text-gray-900 sm:text-5xl'>
-                  Comeing Soor & Get <br />
+                  Coming Soon & Get <br />
                   Shoes News{' '}
                 </h2>
               </div>
             </div>
-            <div className='container mx-auto mt-10 rounded-lg bg-gray-100 p-8'>
-              <div className='relative'>
-                <div className='absolute blur-xl h-64 w-full bg-cover'>
-                  <Image
-                    src={bgCover}
-                    alt={""}
-                    layout='fill'
-                    objectFit='cover'
-                    className='w-full'
-                  />
-                </div>
-                <div className='flex   max-w-5xl items-center justify-center space-x-28 rounded-lg border border-white p-10 text-[100px] font-extrabold'>
-                  {/* Days */}
-                  <div className='flex flex-col items-center'>
-                    <span className='text-gray-900 z-20'>{timeLeft.days}</span>
-                    <span className='text-2xl blur-0'>Days</span>
-                  </div>
-
-                  {/* Hours */}
-                  <div className='flex flex-col items-center'>
-                    <span className='text-gray-900 z-20'>{timeLeft.hours}</span>
-                    <span className='text-2xl blur-0'>Hours</span>
-                  </div>
-
-                  {/* Minutes */}
-                  <div className='flex flex-col items-center'>
-                    <span className='text-gray-900 z-20'>{timeLeft.minutes}</span>
-                    <span className='text-2xl blur-0'>Minutes</span>
-                  </div>
-
-                  {/* Seconds */}
-                  <div className='flex flex-col items-center'>
-                    <span className='text-gray-900 z-20'>{timeLeft.seconds}</span>
-                    <span className='text-2xl blur-0'>Seconds</span>
-                  </div>
-                </div>
-              </div>
-
               {/* last section */}
               <div className='mt-14'>
                 <p className='text-5xl font-semibold italic'>Coming Soon to Shoe Paradise!</p>
@@ -133,7 +95,6 @@ const NewsLetter = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Banner() {
   return (
     <div className='relative lg:min-h-screen'>
@@ -12,7 +14,7 @@ function Banner() {
           Bays cant start with out perfect shoes.
         </h1>
         <button className='group btn btn-outline relative mt-3 rounded-none border-white text-white hover:bg-transparent lg:mt-6'>
-          <p className='z-10 font-light group-hover:text-black lg:text-xl'> View All Collection</p>
+          <Link href={'/AllShoe'}><p className='z-10 font-light group-hover:text-black lg:text-xl'> View All Collection</p></Link>
           <span className='absolute inset-0 w-0 bg-white duration-500 group-hover:w-full'></span>
         </button>
       </div>

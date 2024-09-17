@@ -1,7 +1,9 @@
 import { connectDb } from "@/app/lib/connectDb"
 import { NextRequest, NextResponse } from "next/server"
-import { authOptions } from "../auth/[...nextauth]/route"
+
 import { getServerSession } from "next-auth"
+import { authOptions } from "../utils/AuthOptions"
+
 
 export const DELETE =async(req:NextRequest):Promise<NextResponse>=>{
     const {id}= await req.json()
