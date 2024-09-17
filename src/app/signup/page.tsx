@@ -44,14 +44,18 @@ const page = () => {
     }
   };
   const handleSocialLogin = async (handler: string) => {
-    const res = await signIn(handler);
+    try {
+      const res = await signIn(handler,{
+        callbackUrl: '/', 
+      });
     if(res?.ok){
         router.push('/')
         toast.success('you have successfully logged in!')
     }
-    else{
-        toast.error('Something Went Wrong!!!')
+    } catch (error) {
+      console.log(error)
     }
+    
   };
   return (
     <div className='flex h-screen flex-col md:flex-row'>
