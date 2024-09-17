@@ -9,7 +9,7 @@ export const connectDb = async (): Promise<Db | undefined> => {
       return cachedDb;
     }
 
-    const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_DB_USER}:${process.env.NEXT_PUBLIC_DB_PASSWORD}@cluster0.6qdai.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+    const uri = `mongodb+srv://footfinesse789:7Hqd0I7y2Qnjoss7@cluster0.6qdai.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     
     const options = { 
       useNewUrlParser: true,

@@ -1,20 +1,19 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
     eslint: {
-        ignoreDuringBuilds: true,
+      ignoreDuringBuilds: true,
     },
-    images :{
-        remotePatterns:[
-            {
-                protocol: "https",
-                hostname: "*",
-                port: "",
-                pathname:"/**"
-            }
-        ]
-    }
-};
-module.exports = {
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "*",
+          port: "",
+          pathname: "/**",
+        },
+      ],
+    },
     typescript: {
       // !! WARN !!
       // Dangerously allow production builds to successfully complete even if
@@ -22,6 +21,7 @@ module.exports = {
       // !! WARN !!
       ignoreBuildErrors: true,
     },
-  }
-
-export default nextConfig;
+  };
+  
+  export default nextConfig;
+  
