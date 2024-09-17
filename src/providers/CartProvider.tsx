@@ -37,11 +37,17 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('comparedShoes', JSON.stringify(compare));
-    }
-  }, [compare]);
+  const [grandTotal, setGrandTotal] = useState<number>(0);
+
+  const [cart, setCart] = useState(() => {
+    const saveCart = localStorage.getItem('cart');
+    return saveCart ? JSON.parse(saveCart) : [];
+  });
+
+  useEffect(()=>{
+    localStorage.setItem('comparedShoes', JSON.stringify(compare));
+  },[compare])
+
 
   const compareShoes = (shoeId: any): void => {
     if (typeof window === 'undefined') return;
@@ -80,16 +86,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     toast.success('Shoe removed from comparison');
     setCompare(remaining);
   };
-
-  const [grandTotal, setGrandTotal] = useState<number>(0);
-  const [cart, setCart] = useState<Product[]>([]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saveCart = localStorage.getItem('shoeCart');
-      setCart(saveCart ? JSON.parse(saveCart) : []);
-    }
-  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -133,18 +129,41 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // update product quantity
   const updateQuantityOfProduct = (productId: number, state: boolean) => {
-    const result = cart.map((c: any) =>
-      c.id === productId
-        ? { ...c, quantity: state ? c.quantity + 1 : c.quantity - 1 }
-        : c
-    );
-    toast.success(`${state ? '+1' : '-1'} Quantity Updated`, {
-      style: {
-        background: '#2B3440',
-        color: '#fff',
-      },
-    });
-    setCart(result);
+
+    if (state) {
+      const result = cart.map((c) => (c.id === productId ? { ...c, quantity: c.quantity + 1 } : c));
+      toast.success(' +1 Quantity Updated', {
+        style: {
+          background: '#2B3441',
+          color: '#fff',
+        },
+      });
+      return setCart(result);
+    } else {
+      const result = cart.map((c:any) => (c.id === productId && c.quantity > 0 ? { ...c, quantity: c.quantity - 1 } : c));
+
+      cart.forEach(e => {
+        if(e.id === productId && e.quantity === 0) {
+         
+          toast.error('You cant Reduce', {
+            style: {
+              background: '#2B3440',
+              color: '#fff',
+            },
+          });
+        } else{
+          toast.success(' -1 Quantity Updated', {
+            style: {
+              background: '#2B3440',
+              color: '#fff',
+            },
+          });
+        }
+      });
+
+
+      return setCart(result);
+    }
   };
 
   // delete from cart
