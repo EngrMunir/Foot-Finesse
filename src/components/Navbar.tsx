@@ -7,14 +7,42 @@ import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
 import { CartContext } from '@/providers/CartProvider';
+import { FaScaleUnbalanced } from 'react-icons/fa6';
+interface CustomUser {
+  role: string;
+}
+
+import axios from 'axios';
+
+interface Shoe {
+  _id: string;
+  id: number;
+  category: string;
+  shoeName: string;
+  price: number;
+  discountPrice: number;
+  shortDescription: string;
+  rating: number;
+  image: string;
+}
+
 const Navbar = () => {
+  const [shoes, setShoes] = useState<Shoe[]>([]);
+  const getShoes = async () => {
+    const res = await axios.get('http://localhost:3000/api/wishlist');
+    setShoes(res.data);
+  };
+  useEffect(() => {
+    getShoes();
+  }, []);
   const session = useSession();
-  console.log(session);
+  //console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { cart } = useContext(CartContext);
-
+  const { cart, getComparedShoes }: any = useContext(CartContext);
+  const comparedShoeLength = getComparedShoes();
+  const user = session?.data?.user as CustomUser;
   useEffect(() => {
     const navStateHandler = () => {
       if (window.scrollY > 100) {
@@ -36,19 +64,15 @@ const Navbar = () => {
     },
     {
       title: 'About',
-      path: '/about',
+      path: '/aboutus',
     },
     {
-      title: 'All Shoe',
+      title: 'Shop',
       path: '/AllShoe',
     },
     {
-      title: 'Dashboard',
-      path: '/admin',
-    },
-    {
-      title: 'Services',
-      path: '/services',
+      title: 'Blogs',
+      path: '/blog',
     },
     {
       title: 'Contacts',
@@ -64,7 +88,7 @@ const Navbar = () => {
   ) {
     return null;
   }
-  console.log(session);
+  //console.log(session);
 
   return (
     <div
@@ -130,25 +154,40 @@ const Navbar = () => {
       <div className='navbar-end hidden lg:flex'>
         {session?.status === 'authenticated' ? (
           <p>
-            <Link href='profile'>{session?.data?.user?.name}</Link>
+            <Link href={user?.role === 'admin' ? '/admin' : 'profile'}>
+              {session?.data?.user?.name}
+            </Link>
           </p>
         ) : (
           <></>
         )}
         <button className='btn btn-circle btn-ghost'>
+          <Link href={'/compare'}>
+            <div className='relative'>
+              <FaScaleUnbalanced className='text-2xl' />
+              <p className='absolute -bottom-1 -right-2 rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
+                {comparedShoeLength.length}
+              </p>
+            </div>
+          </Link>
+        </button>
+        <button className='btn btn-circle btn-ghost'>
           <Link href={'/carts'}>
             <div className='relative'>
               <BiCart className='text-2xl' />
-              <p className='absolute bottom-2 right-0 rounded-full bg-white p-[2px] text-xs font-semibold text-red-600'>
+              <p className='absolute -bottom-1 -right-2 rounded-full bg-white p-[2px] text-xs font-semibold text-red-600'>
                 {cart.length}
               </p>
             </div>
           </Link>
         </button>
-        <button className='btn btn-circle btn-ghost mr-2'>
+        <button className='btn btn-circle btn-ghost relative mr-2'>
           <Link href={'/wishlist'}>
             {' '}
             <FaHeartCirclePlus className='text-2xl' />
+            <p className='absolute bottom-[10px] right-[10px] rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
+              {shoes.length}
+            </p>
           </Link>
         </button>
         <div>

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { MdEmail } from 'react-icons/md';
 import { MdLocalPhone } from 'react-icons/md';
 import { TfiWorld } from 'react-icons/tfi';
@@ -16,17 +16,29 @@ interface Email {
 }
 
 function contact() {
-  const handleEmail =async (e:any)=>{
-    e.preventDefault()
-    const form =e.target 
-    const name =form.name.value
-    const email =form.email.value
-    const subject =form.subject.value
-    const message =form.message.value
-    const emailData: Email ={name,email,subject,message}
-    const res =await axios.post('http://localhost:3000/api/contact',emailData)
-    console.log(res.data)
-  }
+  const handleEmail = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    
+    
+    const form = e.currentTarget;
+    const nameInput =form.elements.namedItem('name') as HTMLInputElement;
+    const emailInput =form.elements.namedItem('email') as HTMLInputElement;
+    const subjectInput =form.elements.namedItem('subject') as HTMLInputElement;
+    const messageInput =form.elements.namedItem('message') as HTMLInputElement;
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const subject = subjectInput.value;
+    const message = messageInput.value;
+    const emailData: Email = { name, email, subject, message };
+
+    try {
+
+      const res = await axios.post('http://localhost:3000/api/contact', emailData);
+      console.log(res.data);
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
   return (
     <>
       <div className='container mx-auto'>
@@ -102,7 +114,7 @@ function contact() {
 
           {/* form section */}
 
-          <div className='w-1/2 rounded-lg border-[1px] border-secondary p-10'>
+          <div className='md:w-1/2 rounded-lg border-[1px] border-secondary p-10'>
             <p className='mb-8 text-center text-4xl font-medium text-primary'>Get In Touch</p>
             <form onSubmit={handleEmail}className='space-y-3'>
 
