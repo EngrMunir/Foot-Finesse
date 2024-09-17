@@ -49,9 +49,9 @@ function page() {
         </div>
 
         {/* blog card and sidebar holder */}
-        <div className='mt-10 flex gap-10'>
+        <div className='mt-10 flex md:flex-row flex-col gap-10'>
           {/* siderbar */}
-          <div className='w-[30%]'>
+          <div className='w-full px-4 md:px-0 md:w-[30%]'>
             {/* search box */}
             <div>
               <p className='mb-5 text-2xl font-medium'>Search</p>
@@ -63,7 +63,6 @@ function page() {
                   className='w-full rounded-lg border border-secondary bg-inherit px-4 py-3 pr-12 focus:border-secondary focus:outline-none'
                   placeholder='Search...'
                 />
-
                 <button className='absolute inset-y-0 right-0 flex items-center pr-4'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -160,8 +159,8 @@ function page() {
           </div>
 
           {/* blog cards holder */}
-          <div className='w-[70%]'>
-            <div className='grid grid-cols-2 gap-2'>
+          <div className='w-full px-4 md:px-0 md:w-[70%]'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
               {/* single blog card */}
 
               {Array.isArray(blogs) && blogs.length > 0 ? (

@@ -33,7 +33,7 @@ const NewsLetter = () => {
                     <label className='absolute inset-y-0 end-0 grid place-content-center p-2 px-4'>
                       <input
                         type='submit'
-                        className='inline-block rounded bg-primary px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500'
+                        className='inline-block rounded bg-primary px-4 md:px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500'
                         value='Subscribe now'
                       />
                     </label>
