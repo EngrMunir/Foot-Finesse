@@ -1,5 +1,5 @@
 import { connectDb } from "@/app/lib/connectDb";
-import { authOptions } from "@/app/utils/AuthOptions";
+import { authOptions } from "@/app/api/utils/AuthOptions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
