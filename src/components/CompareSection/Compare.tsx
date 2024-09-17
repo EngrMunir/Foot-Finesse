@@ -10,7 +10,7 @@ import { CartContext } from "@/providers/CartProvider";
 
 
 const Compare = () => {
-    const {getComparedShoes, removeShoe}:any=useContext(CartContext)
+    const {getComparedShoes, removeShoe}:any =useContext(CartContext)
     const shoes =getComparedShoes()
     console.log(shoes)
     return (
