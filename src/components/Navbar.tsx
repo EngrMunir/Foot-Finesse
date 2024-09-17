@@ -7,7 +7,7 @@ import { BiCart, BiLogIn } from 'react-icons/bi';
 import { TbShoe } from 'react-icons/tb';
 import { FaHeartCirclePlus } from 'react-icons/fa6';
 import { CartContext } from '@/providers/CartProvider';
-import { FaScaleUnbalanced } from "react-icons/fa6";
+import { FaScaleUnbalanced } from 'react-icons/fa6';
 interface CustomUser {
   role: string;
 }
@@ -15,33 +15,33 @@ interface CustomUser {
 import axios from 'axios';
 
 interface Shoe {
-    _id: string; 
-    id: number;
-    category: string;
-    shoeName: string;
-    price: number;
-    discountPrice: number;
-    shortDescription: string;
-    rating: number;
-    image: string;
-  }
+  _id: string;
+  id: number;
+  category: string;
+  shoeName: string;
+  price: number;
+  discountPrice: number;
+  shortDescription: string;
+  rating: number;
+  image: string;
+}
 
 const Navbar = () => {
-  const [shoes, setShoes] = useState<Shoe[]>([])
-  const getShoes = async() => {
-      const res = await axios.get('http://localhost:3000/api/wishlist')
-      setShoes(res.data);
-  }
+  const [shoes, setShoes] = useState<Shoe[]>([]);
+  const getShoes = async () => {
+    const res = await axios.get('http://localhost:3000/api/wishlist');
+    setShoes(res.data);
+  };
   useEffect(() => {
-    getShoes()
+    getShoes();
   }, []);
   const session = useSession();
   //console.log(session);
   const pathName = usePathname();
   const [navMoved, setNavMoved] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { cart,getComparedShoes }: any = useContext(CartContext);
-  const comparedShoeLength =getComparedShoes()
+  const { cart, getComparedShoes }: any = useContext(CartContext);
+  const comparedShoeLength = getComparedShoes();
   const user = session?.data?.user as CustomUser;
   useEffect(() => {
     const navStateHandler = () => {
@@ -164,8 +164,8 @@ const Navbar = () => {
         <button className='btn btn-circle btn-ghost'>
           <Link href={'/compare'}>
             <div className='relative'>
-             <FaScaleUnbalanced className='text-2xl'/>
-             <p className='absolute -bottom-1 -right-2 rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
+              <FaScaleUnbalanced className='text-2xl' />
+              <p className='absolute -bottom-1 -right-2 rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
                 {comparedShoeLength.length}
               </p>
             </div>
@@ -181,13 +181,13 @@ const Navbar = () => {
             </div>
           </Link>
         </button>
-        <button className='btn btn-circle relative btn-ghost mr-2'>
+        <button className='btn btn-circle btn-ghost relative mr-2'>
           <Link href={'/wishlist'}>
             {' '}
             <FaHeartCirclePlus className='text-2xl' />
             <p className='absolute bottom-[10px] right-[10px] rounded-full bg-white px-1 text-xs font-semibold text-red-600'>
-                {shoes.length}
-              </p>
+              {shoes.length}
+            </p>
           </Link>
         </button>
         <div>
