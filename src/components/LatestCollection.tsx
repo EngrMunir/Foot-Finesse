@@ -46,8 +46,8 @@ function LatestCollection() {
     <section className='mx-auto grid max-w-7xl grid-cols-1 items-center gap-5 px-3 py-20 lg:grid-cols-2'>
       <div className='flex'>
         <div className='group relative'>
-          <div className='absolute inset-0 h-[400px] w-[400px] rounded-t-[235px] border border-black duration-700 group-hover:mr-8 group-hover:mt-8 lg:h-[544px] lg:w-[520px]'></div>
-          <div className='relative z-10 duration-700 group-hover:mb-8 group-hover:ml-8'>
+          <div className='absolute inset-0 h-[310px] w-[295px] md:h-[400px] md:w-[400px] rounded-t-[235px] border border-black duration-700 md:group-hover:mr-8 md:group-hover:mt-8 lg:h-[544px] lg:w-[520px]'></div>
+          <div className='relative z-10 duration-700 md:group-hover:mb-8 md:group-hover:ml-8'>
             <Image
               src={collectionImg}
               alt='shoe collection'
