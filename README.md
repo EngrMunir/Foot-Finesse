@@ -1,12 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Live server: https://foot-finesse-alpha.vercel.app/
+
+Foot Finesse is an online store where customers can easily shop for a variety of quality shoes, compare options, get personalized recommendations, and enjoy a smooth, hassle-free shopping experience on any device. It also has an admin panel where the owner can manage all the necessary things to keep the website updated.
+
+Project features: 
+1.A User can find shoes according to their preference. They can add shoes they like in the wishlist or cart and buy later while paying securely with stripe JS. They can also compare between two shoes to get the right shoe for them. They can read blogs about shoes, comment on the blogs and also can share their favorite blogs across all the popular social media. They can also contact with the owner of the shop by sending an email.
+
+2.For Admin and moderators they can add shoes, delete shoes and update information about the shoes. Also they can manage blogs in the website if they need to.
 
 ## Getting Started
-
-## Amr Sunaer bangla
-
-First, run the development server:
-this is test 3
-this
+First Clone the project on your local machine
+Then, Install all the packages. Then give all the credentials on your own account in the env file
+Then, run the development server:
 ```bash
 npm run dev
 # or
